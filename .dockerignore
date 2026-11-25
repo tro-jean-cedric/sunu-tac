@@ -17,3 +17,4 @@ backend/*.db
 legacy
 .run
 backups
+windows-deploy

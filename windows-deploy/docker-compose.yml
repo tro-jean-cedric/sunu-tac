@@ -1,0 +1,39 @@
+# SUNU TAC — production stack for the Windows server. Nothing is built here: images are pulled
+# from the registry (built and pushed by build-and-push.sh). Settings come from .env next to this file.
+#   update.bat   → pull the latest images and (re)start
+name: sunu-tac
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: tac
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: tac
+    volumes: [tac-db:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tac"]
+      interval: 5s
+      retries: 10
+    restart: unless-stopped
+
+  api:
+    image: ${IMAGE_PREFIX:-ghcr.io/tro-jean-cedric/sunu-tac}-api:${TAG:-latest}
+    env_file: [.env]
+    environment:
+      DATABASE_URL: postgresql+psycopg://tac:${POSTGRES_PASSWORD}@db:5432/tac
+      TTS_CACHE_DIR: /data/tts-cache
+    volumes: [tac-tts:/data/tts-cache]
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+
+  web:
+    image: ${IMAGE_PREFIX:-ghcr.io/tro-jean-cedric/sunu-tac}-web:${TAG:-latest}
+    ports: ["${HTTP_PORT:-8080}:80"]
+    depends_on: [api]
+    restart: unless-stopped
+
+volumes:
+  tac-db:
+  tac-tts:
