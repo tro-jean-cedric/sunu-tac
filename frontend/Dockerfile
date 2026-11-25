@@ -1,7 +1,9 @@
 # Build context: repository root (needs shared/ and vendor/)
 
 # dev: Vite dev server with HMR (used by docker-compose.override.yml, sources bind-mounted)
-FROM node:22-alpine AS dev
+# --platform=$BUILDPLATFORM: npm/vite run natively even when build-and-push.sh targets linux/amd64 from an
+# ARM Mac (emulated npm crashes); this stage only produces static files, the final nginx stage is per-platform.
+FROM --platform=$BUILDPLATFORM node:22-alpine AS dev
 WORKDIR /srv/frontend
 COPY vendor/ /srv/vendor/
 COPY shared/ /srv/shared/

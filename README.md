@@ -150,6 +150,12 @@ cd frontend && npm run typecheck
 ```
 
 ## Deployment (intranet)
+
+**Windows PC with pre-built images (recommended):** `./build-and-push.sh` builds linux/amd64 images and pushes them
+to ghcr.io. Copy `windows-deploy/` (compose file, `.env`, `update.bat`, `backup.bat`, `restore.bat`) to the Windows
+machine and follow `windows-deploy/README.md`.
+
+**Building on the server itself:**
 ```bash
 cp .env.example .env    # set JWT_SECRET, ADMIN_PASSWORD, LDAP_*, COOKIE_SECURE=true behind HTTPS
 # -f docker-compose.yml skips docker-compose.override.yml (dev hot reload) — always pass it on a server
