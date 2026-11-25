@@ -1,1 +1,5 @@
 *.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+windows-native/README.txt text eol=crlf
+windows-native/.env.example text eol=crlf

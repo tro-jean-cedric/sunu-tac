@@ -48,6 +48,10 @@ class Settings(BaseSettings):
     # CORS for the Vite dev servers
     cors_origins: list[str] = ["http://localhost:5173", "http://localhost:5174"]
 
+    # Built frontend (vite build output) served by the API itself, with the same routes as deploy/nginx.conf.
+    # Used by the native Windows install (no nginx); empty = API only (Docker / dev: nginx or Vite serve the UI).
+    web_dir: str = ""
+
     # minimum group size for collective results
     min_group_size: int = 5
 

@@ -151,7 +151,13 @@ cd frontend && npm run typecheck
 
 ## Deployment (intranet)
 
-**Windows PC with pre-built images (recommended):** `./build-and-push.sh` builds linux/amd64 images and pushes them
+**Windows Server without Docker (e.g. Windows Server 2019):** `./build-windows-package.sh` produces
+`dist-windows/sunu-tac-windows-<sha>.zip`: embedded Python with every dependency as Windows wheels, the backend, the
+built frontend (served by the API itself via `WEB_DIR`, same routes as `deploy/nginx.conf`) and a WinSW service
+wrapper. On the server: install PostgreSQL 16 once, unzip, run `install.cmd` as administrator (also for updates; it
+backs up the database first). See `windows-native/README.txt`.
+
+**Docker host with pre-built images (Linux VM, Windows 10/11 with Docker Desktop):** `./build-and-push.sh` builds linux/amd64 images and pushes them
 to ghcr.io. Copy `windows-deploy/` (compose file, `.env`, `update.bat`, `backup.bat`, `restore.bat`) to the Windows
 machine and follow `windows-deploy/README.md`.
 
