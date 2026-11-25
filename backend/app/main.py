@@ -83,3 +83,11 @@ for r in (auth.router, meta.router, me.router, results.router, admin.router, ai.
 @app.get("/api/health")
 def health():
     return {"ok": True}
+
+
+if settings.web_dir:  # native install: the API also serves the built frontend (after every /api route)
+    from pathlib import Path
+
+    from app.web import mount_web
+
+    mount_web(app, Path(settings.web_dir))

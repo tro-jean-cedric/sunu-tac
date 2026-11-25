@@ -15,3 +15,5 @@ backend/.tts-cache/
 .run/
 backups/
 .env-old
+dist-windows/
+.cache/
