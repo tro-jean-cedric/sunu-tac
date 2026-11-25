@@ -1,0 +1,45 @@
+{
+  "name": "tac-sunu-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:test": "vite --open /",
+    "dev:console": "vite --open /admin/",
+    "build": "tsc -b && vite build",
+    "build:test": "tsc -b && vite build --mode test-only",
+    "build:console": "tsc -b && vite build --mode console-only",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^3.10.0",
+    "@iconify/react": "^5.2.1",
+    "@mui/lab": "^5.0.0-alpha.177",
+    "@mui/material": "^5.18.0",
+    "@mui/x-date-pickers": "^7.29.4",
+    "@vionhub/design-system": "file:../vendor/vionhub-design-system-0.2.0.tgz",
+    "dayjs": "^1.11.21",
+    "framer-motion": "^11.18.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.83.0",
+    "react-router-dom": "^6.30.4",
+    "simplebar-react": "^3.3.2",
+    "sonner": "^1.7.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
+    "vitest": "^2.1.9"
+  }
+}

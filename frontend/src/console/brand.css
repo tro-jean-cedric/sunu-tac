@@ -1,0 +1,14 @@
+/* The design-system sidebar header is hard-coded VionHub red (#c8332e); re-brand it SUNU.
+   Targets the header box that holds the layout logo (alt="VionHub" is set by the library). */
+div:has(> img[alt='VionHub']),
+div:has(> div > img[alt='VionHub']) {
+  background: linear-gradient(90deg, #6b0f1e 0%, #a6192e 100%) !important;
+}
+
+/* Active nav item background is a hard-coded CSS variable (#c8332e) on the nav root;
+   redefine it on the nav's children (custom properties inherit). */
+.nav__section__vertical > *,
+.nav__section__mini > *,
+.nav__section__horizontal > * {
+  --nav-item-root-active-bg: #a6192e;
+}

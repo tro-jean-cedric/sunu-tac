@@ -1,0 +1,19 @@
+# Build context is the repo root: keep host-only artefacts (macOS binaries, secrets) out of the images.
+**/node_modules
+**/dist
+**/.venv
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/*.tsbuildinfo
+backend/.tts-cache
+backend/*.db
+.env
+.env.*
+!.env.example
+.git
+.idea
+.claude
+legacy
+.run
+backups

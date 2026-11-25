@@ -1,0 +1,50 @@
+# Development: hot reload for backend and frontend.
+# This file is loaded automatically by `docker compose up` on top of docker-compose.yml.
+#   docker compose up -d --build     (first time)  → http://localhost:8080/ (test)  /admin/ (console)
+#   docker compose up -d             (afterwards)    API docs: http://localhost:8000/api/docs
+#
+# The source folders are mounted into the containers (instead of the copy frozen in the image):
+#   - api: uvicorn --reload restarts on every change in backend/app or shared/
+#   - web: the Vite dev server (HMR) replaces the nginx static build, same URL (:8080)
+# Dependencies stay in the image: a change to pyproject/uv.lock, package.json/package-lock.json
+# or a Dockerfile still needs `docker compose up -d --build`.
+# New Alembic migrations are applied on start-up: `docker compose restart api`.
+#
+# To ignore this file (production, CI):  docker compose -f docker-compose.yml up -d --build
+#
+# If edits are not picked up (file events not reaching the container), uncomment the
+# *_POLLING variables below.
+
+services:
+  db:
+    ports: ["15433:5432"]   # host access: ./tac.sh local, psql / DB tools (localhost:15433, tac / POSTGRES_PASSWORD)
+
+  api:
+    command: >-
+      sh -c "uv run --no-dev alembic upgrade head && exec uv run --no-dev uvicorn app.main:app
+      --host 0.0.0.0 --port 8000 --proxy-headers
+      --reload --reload-dir app --reload-dir /srv/shared --reload-include '*.json'"
+    volumes:
+      - ./backend/app:/srv/backend/app
+      - ./backend/alembic:/srv/backend/alembic
+      - ./backend/alembic.ini:/srv/backend/alembic.ini
+      - ./shared:/srv/shared
+    ports: ["8000:8000"]
+    # environment:
+    #   WATCHFILES_FORCE_POLLING: "true"
+    restart: !reset null
+
+  web:
+    build: { context: ., dockerfile: frontend/Dockerfile, target: dev }
+    environment:
+      VITE_API_TARGET: http://api:8000
+      # CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./frontend/src:/srv/frontend/src
+      - ./frontend/index.html:/srv/frontend/index.html
+      - ./frontend/admin:/srv/frontend/admin
+      - ./frontend/public:/srv/frontend/public
+      - ./frontend/vite.config.ts:/srv/frontend/vite.config.ts
+      - ./shared:/srv/shared
+    ports: !override ["8080:5173"]
+    restart: !reset null

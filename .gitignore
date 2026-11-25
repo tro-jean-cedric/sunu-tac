@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.local
+.DS_Store
+.idea/
+.claude/worktrees/
+backend/*.db
+*.tsbuildinfo
+backend/.tts-cache/
+.run/
+backups/
+.env-old

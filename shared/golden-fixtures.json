@@ -1,0 +1,2076 @@
+{
+ "cases": [
+  {
+   "name": "coherent",
+   "ident": {
+    "matricule": "T1000",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 1500,
+   "sit": {
+    "A1": 2,
+    "A2": 2,
+    "A3": 3,
+    "A4": 2,
+    "A5": 3,
+    "A6": 2,
+    "A7": 2,
+    "A8": 0,
+    "A9": 0,
+    "A10": 0,
+    "A11": 1,
+    "A12": 3
+   },
+   "bloc": {
+    "B1": {
+     "most": 2,
+     "least": 0
+    },
+    "B2": {
+     "most": 1,
+     "least": 0
+    },
+    "B3": {
+     "most": 0,
+     "least": 2
+    },
+    "B4": {
+     "most": 2,
+     "least": 0
+    },
+    "B5": {
+     "most": 1,
+     "least": 0
+    },
+    "B6": {
+     "most": 2,
+     "least": 0
+    },
+    "B7": {
+     "most": 2,
+     "least": 0
+    },
+    "B8": {
+     "most": 2,
+     "least": 0
+    },
+    "B9": {
+     "most": 1,
+     "least": 2
+    },
+    "B10": {
+     "most": 0,
+     "least": 1
+    },
+    "B11": {
+     "most": 1,
+     "least": 2
+    },
+    "B12": {
+     "most": 0,
+     "least": 1
+    }
+   },
+   "lik": {
+    "C1": 1,
+    "C2": 3,
+    "C3": 3,
+    "C4": 4,
+    "C5": 4,
+    "C6": 5,
+    "C7": 5,
+    "C8": 2,
+    "C9": 4,
+    "C10": 3,
+    "C11": 5,
+    "C12": 1,
+    "C13": 5,
+    "C14": 2,
+    "C15": 1,
+    "C16": 2,
+    "C17": 1,
+    "C18": 1,
+    "C19": 5,
+    "C20": 2,
+    "C21": 2,
+    "C22": 4,
+    "C23": 4,
+    "C24": 3,
+    "C25": 5,
+    "C26": 4,
+    "D1": 2,
+    "D2": 2,
+    "D3": 2,
+    "D4": 2,
+    "D5": 2,
+    "I1": 4,
+    "I2": 4,
+    "I3": 5,
+    "I4": 2
+   },
+   "expected": {
+    "sjt": {
+     "H": 22.22222222222222,
+     "C": 33.33333333333333,
+     "A": 11.11111111111111,
+     "P": 44.44444444444444
+    },
+    "lik": {
+     "H": 33.33333333333333,
+     "C": 65.625,
+     "A": 50,
+     "P": 50
+    },
+    "scores": {
+     "H": 26.666666666666664,
+     "C": 46.25,
+     "A": 26.666666666666664,
+     "P": 46.666666666666664
+    },
+    "global": 36.56249999999999,
+    "dom": {
+     "H": 48.148148148148145,
+     "C": 37.03703703703704,
+     "A": 40.74074074074074,
+     "P": 51.85185185185185
+    },
+    "domHaut": "P",
+    "domBas": "C",
+    "ds": 0,
+    "inc": 0,
+    "uniforme": false,
+    "rapide": false,
+    "dsHaut": false,
+    "invalide": false,
+    "dureeS": 1500
+   },
+   "code": "TAC1.VDEwMDB+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH4xNTAwfDMzNDM0MzMxMTEyNHwzMTIxMTMzMTIxMzEzMTMxMjMxMjIzMTJ8MTMzNDQ1NTI0MzUxNTIxMjExNTIyNDQzNTQyMjIyMjQ0NTI=",
+   "decoded": {
+    "ident": {
+     "matricule": "T1000",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 2,
+     "A2": 2,
+     "A3": 3,
+     "A4": 2,
+     "A5": 3,
+     "A6": 2,
+     "A7": 2,
+     "A8": 0,
+     "A9": 0,
+     "A10": 0,
+     "A11": 1,
+     "A12": 3
+    },
+    "bloc": {
+     "B1": {
+      "most": 2,
+      "least": 0
+     },
+     "B2": {
+      "most": 1,
+      "least": 0
+     },
+     "B3": {
+      "most": 0,
+      "least": 2
+     },
+     "B4": {
+      "most": 2,
+      "least": 0
+     },
+     "B5": {
+      "most": 1,
+      "least": 0
+     },
+     "B6": {
+      "most": 2,
+      "least": 0
+     },
+     "B7": {
+      "most": 2,
+      "least": 0
+     },
+     "B8": {
+      "most": 2,
+      "least": 0
+     },
+     "B9": {
+      "most": 1,
+      "least": 2
+     },
+     "B10": {
+      "most": 0,
+      "least": 1
+     },
+     "B11": {
+      "most": 1,
+      "least": 2
+     },
+     "B12": {
+      "most": 0,
+      "least": 1
+     }
+    },
+    "lik": {
+     "C1": 1,
+     "C2": 3,
+     "C3": 3,
+     "C4": 4,
+     "C5": 4,
+     "C6": 5,
+     "C7": 5,
+     "C8": 2,
+     "C9": 4,
+     "C10": 3,
+     "C11": 5,
+     "C12": 1,
+     "C13": 5,
+     "C14": 2,
+     "C15": 1,
+     "C16": 2,
+     "C17": 1,
+     "C18": 1,
+     "C19": 5,
+     "C20": 2,
+     "C21": 2,
+     "C22": 4,
+     "C23": 4,
+     "C24": 3,
+     "C25": 5,
+     "C26": 4,
+     "D1": 2,
+     "D2": 2,
+     "D3": 2,
+     "D4": 2,
+     "D5": 2,
+     "I1": 4,
+     "I2": 4,
+     "I3": 5,
+     "I4": 2
+    },
+    "dureeS": 1500
+   }
+  },
+  {
+   "name": "random1",
+   "ident": {
+    "matricule": "T1001",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 1501,
+   "sit": {
+    "A1": 1,
+    "A2": 0,
+    "A3": 0,
+    "A4": 0,
+    "A5": 1,
+    "A6": 2,
+    "A7": 3,
+    "A8": 1,
+    "A9": 1,
+    "A10": 1,
+    "A11": 2,
+    "A12": 1
+   },
+   "bloc": {
+    "B1": {
+     "most": 0,
+     "least": 2
+    },
+    "B2": {
+     "most": 1,
+     "least": 2
+    },
+    "B3": {
+     "most": 0,
+     "least": 2
+    },
+    "B4": {
+     "most": 1,
+     "least": 2
+    },
+    "B5": {
+     "most": 1,
+     "least": 2
+    },
+    "B6": {
+     "most": 1,
+     "least": 0
+    },
+    "B7": {
+     "most": 0,
+     "least": 1
+    },
+    "B8": {
+     "most": 1,
+     "least": 0
+    },
+    "B9": {
+     "most": 2,
+     "least": 0
+    },
+    "B10": {
+     "most": 1,
+     "least": 0
+    },
+    "B11": {
+     "most": 2,
+     "least": 1
+    },
+    "B12": {
+     "most": 1,
+     "least": 0
+    }
+   },
+   "lik": {
+    "C1": 1,
+    "C2": 5,
+    "C3": 4,
+    "C4": 3,
+    "C5": 4,
+    "C6": 4,
+    "C7": 5,
+    "C8": 2,
+    "C9": 1,
+    "C10": 3,
+    "C11": 1,
+    "C12": 5,
+    "C13": 2,
+    "C14": 4,
+    "C15": 3,
+    "C16": 1,
+    "C17": 1,
+    "C18": 3,
+    "C19": 3,
+    "C20": 5,
+    "C21": 1,
+    "C22": 5,
+    "C23": 5,
+    "C24": 4,
+    "C25": 4,
+    "C26": 3,
+    "D1": 3,
+    "D2": 3,
+    "D3": 2,
+    "D4": 2,
+    "D5": 1,
+    "I1": 2,
+    "I2": 5,
+    "I3": 4,
+    "I4": 2
+   },
+   "expected": {
+    "sjt": {
+     "H": 33.33333333333333,
+     "C": 44.44444444444444,
+     "A": 77.77777777777779,
+     "P": 66.66666666666666
+    },
+    "lik": {
+     "H": 54.166666666666664,
+     "C": 53.125,
+     "A": 58.333333333333336,
+     "P": 50
+    },
+    "scores": {
+     "H": 41.666666666666664,
+     "C": 47.916666666666664,
+     "A": 70,
+     "P": 59.99999999999999
+    },
+    "global": 54.89583333333333,
+    "dom": {
+     "H": 44.44444444444444,
+     "C": 51.85185185185185,
+     "A": 25.925925925925924,
+     "P": 55.55555555555556
+    },
+    "domHaut": "P",
+    "domBas": "A",
+    "ds": 0,
+    "inc": 3,
+    "uniforme": false,
+    "rapide": false,
+    "dsHaut": false,
+    "invalide": false,
+    "dureeS": 1501
+   },
+   "code": "TAC1.VDEwMDF+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH4xNTAxfDIxMTEyMzQyMjIzMnwxMzIzMTMyMzIzMjExMjIxMzEyMTMyMjF8MTU0MzQ0NTIxMzE1MjQzMTEzMzUxNTU0NDMzMzIyMTI1NDI=",
+   "decoded": {
+    "ident": {
+     "matricule": "T1001",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 1,
+     "A2": 0,
+     "A3": 0,
+     "A4": 0,
+     "A5": 1,
+     "A6": 2,
+     "A7": 3,
+     "A8": 1,
+     "A9": 1,
+     "A10": 1,
+     "A11": 2,
+     "A12": 1
+    },
+    "bloc": {
+     "B1": {
+      "most": 0,
+      "least": 2
+     },
+     "B2": {
+      "most": 1,
+      "least": 2
+     },
+     "B3": {
+      "most": 0,
+      "least": 2
+     },
+     "B4": {
+      "most": 1,
+      "least": 2
+     },
+     "B5": {
+      "most": 1,
+      "least": 2
+     },
+     "B6": {
+      "most": 1,
+      "least": 0
+     },
+     "B7": {
+      "most": 0,
+      "least": 1
+     },
+     "B8": {
+      "most": 1,
+      "least": 0
+     },
+     "B9": {
+      "most": 2,
+      "least": 0
+     },
+     "B10": {
+      "most": 1,
+      "least": 0
+     },
+     "B11": {
+      "most": 2,
+      "least": 1
+     },
+     "B12": {
+      "most": 1,
+      "least": 0
+     }
+    },
+    "lik": {
+     "C1": 1,
+     "C2": 5,
+     "C3": 4,
+     "C4": 3,
+     "C5": 4,
+     "C6": 4,
+     "C7": 5,
+     "C8": 2,
+     "C9": 1,
+     "C10": 3,
+     "C11": 1,
+     "C12": 5,
+     "C13": 2,
+     "C14": 4,
+     "C15": 3,
+     "C16": 1,
+     "C17": 1,
+     "C18": 3,
+     "C19": 3,
+     "C20": 5,
+     "C21": 1,
+     "C22": 5,
+     "C23": 5,
+     "C24": 4,
+     "C25": 4,
+     "C26": 3,
+     "D1": 3,
+     "D2": 3,
+     "D3": 2,
+     "D4": 2,
+     "D5": 1,
+     "I1": 2,
+     "I2": 5,
+     "I3": 4,
+     "I4": 2
+    },
+    "dureeS": 1501
+   }
+  },
+  {
+   "name": "random2",
+   "ident": {
+    "matricule": "T1002",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 1502,
+   "sit": {
+    "A1": 2,
+    "A2": 1,
+    "A3": 2,
+    "A4": 3,
+    "A5": 1,
+    "A6": 0,
+    "A7": 2,
+    "A8": 3,
+    "A9": 2,
+    "A10": 0,
+    "A11": 3,
+    "A12": 3
+   },
+   "bloc": {
+    "B1": {
+     "most": 0,
+     "least": 1
+    },
+    "B2": {
+     "most": 0,
+     "least": 1
+    },
+    "B3": {
+     "most": 1,
+     "least": 0
+    },
+    "B4": {
+     "most": 2,
+     "least": 0
+    },
+    "B5": {
+     "most": 0,
+     "least": 1
+    },
+    "B6": {
+     "most": 1,
+     "least": 0
+    },
+    "B7": {
+     "most": 2,
+     "least": 0
+    },
+    "B8": {
+     "most": 2,
+     "least": 0
+    },
+    "B9": {
+     "most": 2,
+     "least": 0
+    },
+    "B10": {
+     "most": 2,
+     "least": 0
+    },
+    "B11": {
+     "most": 1,
+     "least": 2
+    },
+    "B12": {
+     "most": 1,
+     "least": 2
+    }
+   },
+   "lik": {
+    "C1": 4,
+    "C2": 4,
+    "C3": 3,
+    "C4": 2,
+    "C5": 4,
+    "C6": 4,
+    "C7": 5,
+    "C8": 2,
+    "C9": 1,
+    "C10": 1,
+    "C11": 5,
+    "C12": 3,
+    "C13": 3,
+    "C14": 5,
+    "C15": 5,
+    "C16": 5,
+    "C17": 5,
+    "C18": 1,
+    "C19": 2,
+    "C20": 3,
+    "C21": 1,
+    "C22": 3,
+    "C23": 4,
+    "C24": 4,
+    "C25": 5,
+    "C26": 4,
+    "D1": 4,
+    "D2": 1,
+    "D3": 5,
+    "D4": 3,
+    "D5": 2,
+    "I1": 1,
+    "I2": 1,
+    "I3": 1,
+    "I4": 1
+   },
+   "expected": {
+    "sjt": {
+     "H": 66.66666666666666,
+     "C": 44.44444444444444,
+     "A": 33.33333333333333,
+     "P": 33.33333333333333
+    },
+    "lik": {
+     "H": 62.5,
+     "C": 71.875,
+     "A": 62.5,
+     "P": 54.166666666666664
+    },
+    "scores": {
+     "H": 65,
+     "C": 55.416666666666664,
+     "A": 45,
+     "P": 41.666666666666664
+    },
+    "global": 51.77083333333333,
+    "dom": {
+     "H": 55.55555555555556,
+     "C": 37.03703703703704,
+     "A": 62.96296296296296,
+     "P": 22.22222222222222
+    },
+    "domHaut": "A",
+    "domBas": "P",
+    "ds": 1,
+    "inc": 2,
+    "uniforme": false,
+    "rapide": false,
+    "dsHaut": false,
+    "invalide": false,
+    "dureeS": 1502
+   },
+   "code": "TAC1.VDEwMDJ+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH4xNTAyfDMyMzQyMTM0MzE0NHwxMjEyMjEzMTEyMjEzMTMxMzEzMTIzMjN8NDQzMjQ0NTIxMTUzMzU1NTUxMjMxMzQ0NTQ0MTUzMjExMTE=",
+   "decoded": {
+    "ident": {
+     "matricule": "T1002",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 2,
+     "A2": 1,
+     "A3": 2,
+     "A4": 3,
+     "A5": 1,
+     "A6": 0,
+     "A7": 2,
+     "A8": 3,
+     "A9": 2,
+     "A10": 0,
+     "A11": 3,
+     "A12": 3
+    },
+    "bloc": {
+     "B1": {
+      "most": 0,
+      "least": 1
+     },
+     "B2": {
+      "most": 0,
+      "least": 1
+     },
+     "B3": {
+      "most": 1,
+      "least": 0
+     },
+     "B4": {
+      "most": 2,
+      "least": 0
+     },
+     "B5": {
+      "most": 0,
+      "least": 1
+     },
+     "B6": {
+      "most": 1,
+      "least": 0
+     },
+     "B7": {
+      "most": 2,
+      "least": 0
+     },
+     "B8": {
+      "most": 2,
+      "least": 0
+     },
+     "B9": {
+      "most": 2,
+      "least": 0
+     },
+     "B10": {
+      "most": 2,
+      "least": 0
+     },
+     "B11": {
+      "most": 1,
+      "least": 2
+     },
+     "B12": {
+      "most": 1,
+      "least": 2
+     }
+    },
+    "lik": {
+     "C1": 4,
+     "C2": 4,
+     "C3": 3,
+     "C4": 2,
+     "C5": 4,
+     "C6": 4,
+     "C7": 5,
+     "C8": 2,
+     "C9": 1,
+     "C10": 1,
+     "C11": 5,
+     "C12": 3,
+     "C13": 3,
+     "C14": 5,
+     "C15": 5,
+     "C16": 5,
+     "C17": 5,
+     "C18": 1,
+     "C19": 2,
+     "C20": 3,
+     "C21": 1,
+     "C22": 3,
+     "C23": 4,
+     "C24": 4,
+     "C25": 5,
+     "C26": 4,
+     "D1": 4,
+     "D2": 1,
+     "D3": 5,
+     "D4": 3,
+     "D5": 2,
+     "I1": 1,
+     "I2": 1,
+     "I3": 1,
+     "I4": 1
+    },
+    "dureeS": 1502
+   }
+  },
+  {
+   "name": "random3",
+   "ident": {
+    "matricule": "T1003",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 600,
+   "sit": {
+    "A1": 2,
+    "A2": 0,
+    "A3": 0,
+    "A4": 2,
+    "A5": 0,
+    "A6": 0,
+    "A7": 0,
+    "A8": 0,
+    "A9": 3,
+    "A10": 2,
+    "A11": 1,
+    "A12": 1
+   },
+   "bloc": {
+    "B1": {
+     "most": 2,
+     "least": 1
+    },
+    "B2": {
+     "most": 1,
+     "least": 2
+    },
+    "B3": {
+     "most": 1,
+     "least": 2
+    },
+    "B4": {
+     "most": 0,
+     "least": 1
+    },
+    "B5": {
+     "most": 0,
+     "least": 1
+    },
+    "B6": {
+     "most": 1,
+     "least": 0
+    },
+    "B7": {
+     "most": 2,
+     "least": 0
+    },
+    "B8": {
+     "most": 1,
+     "least": 0
+    },
+    "B9": {
+     "most": 0,
+     "least": 1
+    },
+    "B10": {
+     "most": 2,
+     "least": 0
+    },
+    "B11": {
+     "most": 1,
+     "least": 2
+    },
+    "B12": {
+     "most": 1,
+     "least": 2
+    }
+   },
+   "lik": {
+    "C1": 1,
+    "C2": 4,
+    "C3": 1,
+    "C4": 5,
+    "C5": 3,
+    "C6": 4,
+    "C7": 2,
+    "C8": 3,
+    "C9": 4,
+    "C10": 5,
+    "C11": 1,
+    "C12": 1,
+    "C13": 3,
+    "C14": 2,
+    "C15": 2,
+    "C16": 1,
+    "C17": 4,
+    "C18": 1,
+    "C19": 2,
+    "C20": 3,
+    "C21": 3,
+    "C22": 2,
+    "C23": 3,
+    "C24": 3,
+    "C25": 1,
+    "C26": 4,
+    "D1": 4,
+    "D2": 5,
+    "D3": 1,
+    "D4": 5,
+    "D5": 5,
+    "I1": 4,
+    "I2": 4,
+    "I3": 2,
+    "I4": 1
+   },
+   "expected": {
+    "sjt": {
+     "H": 22.22222222222222,
+     "C": 44.44444444444444,
+     "A": 55.55555555555556,
+     "P": 88.88888888888889
+    },
+    "lik": {
+     "H": 25,
+     "C": 28.125,
+     "A": 62.5,
+     "P": 41.66666666666667
+    },
+    "scores": {
+     "H": 22.22222222222222,
+     "C": 44.44444444444444,
+     "A": 55.55555555555556,
+     "P": 88.88888888888889
+    },
+    "global": 52.77777777777777,
+    "dom": {
+     "H": 33.33333333333333,
+     "C": 44.44444444444444,
+     "A": 66.66666666666666,
+     "P": 33.33333333333333
+    },
+    "domHaut": "A",
+    "domBas": "P",
+    "ds": 3,
+    "inc": 3,
+    "uniforme": false,
+    "rapide": true,
+    "dsHaut": true,
+    "invalide": false,
+    "dureeS": 600
+   },
+   "code": "TAC1.VDEwMDN+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH42MDB8MzExMzExMTE0MzIyfDMyMjMyMzEyMTIyMTMxMjExMjMxMjMyM3wxNDE1MzQyMzQ1MTEzMjIxNDEyMzMyMzMxNDQ1MTU1NDQyMQ==",
+   "decoded": {
+    "ident": {
+     "matricule": "T1003",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 2,
+     "A2": 0,
+     "A3": 0,
+     "A4": 2,
+     "A5": 0,
+     "A6": 0,
+     "A7": 0,
+     "A8": 0,
+     "A9": 3,
+     "A10": 2,
+     "A11": 1,
+     "A12": 1
+    },
+    "bloc": {
+     "B1": {
+      "most": 2,
+      "least": 1
+     },
+     "B2": {
+      "most": 1,
+      "least": 2
+     },
+     "B3": {
+      "most": 1,
+      "least": 2
+     },
+     "B4": {
+      "most": 0,
+      "least": 1
+     },
+     "B5": {
+      "most": 0,
+      "least": 1
+     },
+     "B6": {
+      "most": 1,
+      "least": 0
+     },
+     "B7": {
+      "most": 2,
+      "least": 0
+     },
+     "B8": {
+      "most": 1,
+      "least": 0
+     },
+     "B9": {
+      "most": 0,
+      "least": 1
+     },
+     "B10": {
+      "most": 2,
+      "least": 0
+     },
+     "B11": {
+      "most": 1,
+      "least": 2
+     },
+     "B12": {
+      "most": 1,
+      "least": 2
+     }
+    },
+    "lik": {
+     "C1": 1,
+     "C2": 4,
+     "C3": 1,
+     "C4": 5,
+     "C5": 3,
+     "C6": 4,
+     "C7": 2,
+     "C8": 3,
+     "C9": 4,
+     "C10": 5,
+     "C11": 1,
+     "C12": 1,
+     "C13": 3,
+     "C14": 2,
+     "C15": 2,
+     "C16": 1,
+     "C17": 4,
+     "C18": 1,
+     "C19": 2,
+     "C20": 3,
+     "C21": 3,
+     "C22": 2,
+     "C23": 3,
+     "C24": 3,
+     "C25": 1,
+     "C26": 4,
+     "D1": 4,
+     "D2": 5,
+     "D3": 1,
+     "D4": 5,
+     "D5": 5,
+     "I1": 4,
+     "I2": 4,
+     "I3": 2,
+     "I4": 1
+    },
+    "dureeS": 600
+   }
+  },
+  {
+   "name": "dshigh",
+   "ident": {
+    "matricule": "T1004",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 1504,
+   "sit": {
+    "A1": 3,
+    "A2": 2,
+    "A3": 3,
+    "A4": 1,
+    "A5": 2,
+    "A6": 1,
+    "A7": 3,
+    "A8": 3,
+    "A9": 2,
+    "A10": 0,
+    "A11": 2,
+    "A12": 3
+   },
+   "bloc": {
+    "B1": {
+     "most": 0,
+     "least": 1
+    },
+    "B2": {
+     "most": 1,
+     "least": 0
+    },
+    "B3": {
+     "most": 2,
+     "least": 0
+    },
+    "B4": {
+     "most": 1,
+     "least": 2
+    },
+    "B5": {
+     "most": 2,
+     "least": 1
+    },
+    "B6": {
+     "most": 0,
+     "least": 1
+    },
+    "B7": {
+     "most": 1,
+     "least": 2
+    },
+    "B8": {
+     "most": 1,
+     "least": 2
+    },
+    "B9": {
+     "most": 2,
+     "least": 0
+    },
+    "B10": {
+     "most": 2,
+     "least": 0
+    },
+    "B11": {
+     "most": 2,
+     "least": 0
+    },
+    "B12": {
+     "most": 2,
+     "least": 0
+    }
+   },
+   "lik": {
+    "C1": 5,
+    "C2": 2,
+    "C3": 2,
+    "C4": 1,
+    "C5": 2,
+    "C6": 3,
+    "C7": 5,
+    "C8": 2,
+    "C9": 4,
+    "C10": 2,
+    "C11": 3,
+    "C12": 2,
+    "C13": 1,
+    "C14": 3,
+    "C15": 2,
+    "C16": 2,
+    "C17": 4,
+    "C18": 5,
+    "C19": 5,
+    "C20": 2,
+    "C21": 2,
+    "C22": 2,
+    "C23": 4,
+    "C24": 1,
+    "C25": 2,
+    "C26": 5,
+    "D1": 5,
+    "D2": 5,
+    "D3": 5,
+    "D4": 5,
+    "D5": 2,
+    "I1": 4,
+    "I2": 4,
+    "I3": 5,
+    "I4": 2
+   },
+   "expected": {
+    "sjt": {
+     "H": 11.11111111111111,
+     "C": 77.77777777777779,
+     "A": 44.44444444444444,
+     "P": 11.11111111111111
+    },
+    "lik": {
+     "H": 54.166666666666664,
+     "C": 56.25,
+     "A": 50,
+     "P": 33.33333333333333
+    },
+    "scores": {
+     "H": 11.11111111111111,
+     "C": 77.77777777777779,
+     "A": 44.44444444444444,
+     "P": 11.11111111111111
+    },
+    "global": 36.111111111111114,
+    "dom": {
+     "H": 25.925925925925924,
+     "C": 62.96296296296296,
+     "A": 33.33333333333333,
+     "P": 55.55555555555556
+    },
+    "domHaut": "C",
+    "domBas": "H",
+    "ds": 4,
+    "inc": 0,
+    "uniforme": false,
+    "rapide": false,
+    "dsHaut": true,
+    "invalide": false,
+    "dureeS": 1504
+   },
+   "code": "TAC1.VDEwMDR+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH4xNTA0fDQzNDIzMjQ0MzEzNHwxMjIxMzEyMzMyMTIyMzIzMzEzMTMxMzF8NTIyMTIzNTI0MjMyMTMyMjQ1NTIyMjQxMjU1NTU1MjQ0NTI=",
+   "decoded": {
+    "ident": {
+     "matricule": "T1004",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 3,
+     "A2": 2,
+     "A3": 3,
+     "A4": 1,
+     "A5": 2,
+     "A6": 1,
+     "A7": 3,
+     "A8": 3,
+     "A9": 2,
+     "A10": 0,
+     "A11": 2,
+     "A12": 3
+    },
+    "bloc": {
+     "B1": {
+      "most": 0,
+      "least": 1
+     },
+     "B2": {
+      "most": 1,
+      "least": 0
+     },
+     "B3": {
+      "most": 2,
+      "least": 0
+     },
+     "B4": {
+      "most": 1,
+      "least": 2
+     },
+     "B5": {
+      "most": 2,
+      "least": 1
+     },
+     "B6": {
+      "most": 0,
+      "least": 1
+     },
+     "B7": {
+      "most": 1,
+      "least": 2
+     },
+     "B8": {
+      "most": 1,
+      "least": 2
+     },
+     "B9": {
+      "most": 2,
+      "least": 0
+     },
+     "B10": {
+      "most": 2,
+      "least": 0
+     },
+     "B11": {
+      "most": 2,
+      "least": 0
+     },
+     "B12": {
+      "most": 2,
+      "least": 0
+     }
+    },
+    "lik": {
+     "C1": 5,
+     "C2": 2,
+     "C3": 2,
+     "C4": 1,
+     "C5": 2,
+     "C6": 3,
+     "C7": 5,
+     "C8": 2,
+     "C9": 4,
+     "C10": 2,
+     "C11": 3,
+     "C12": 2,
+     "C13": 1,
+     "C14": 3,
+     "C15": 2,
+     "C16": 2,
+     "C17": 4,
+     "C18": 5,
+     "C19": 5,
+     "C20": 2,
+     "C21": 2,
+     "C22": 2,
+     "C23": 4,
+     "C24": 1,
+     "C25": 2,
+     "C26": 5,
+     "D1": 5,
+     "D2": 5,
+     "D3": 5,
+     "D4": 5,
+     "D5": 2,
+     "I1": 4,
+     "I2": 4,
+     "I3": 5,
+     "I4": 2
+    },
+    "dureeS": 1504
+   }
+  },
+  {
+   "name": "uniform",
+   "ident": {
+    "matricule": "T1005",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 1505,
+   "sit": {
+    "A1": 0,
+    "A2": 0,
+    "A3": 0,
+    "A4": 0,
+    "A5": 0,
+    "A6": 0,
+    "A7": 0,
+    "A8": 0,
+    "A9": 0,
+    "A10": 0,
+    "A11": 0,
+    "A12": 0
+   },
+   "bloc": {
+    "B1": {
+     "most": 0,
+     "least": 2
+    },
+    "B2": {
+     "most": 1,
+     "least": 0
+    },
+    "B3": {
+     "most": 2,
+     "least": 0
+    },
+    "B4": {
+     "most": 0,
+     "least": 2
+    },
+    "B5": {
+     "most": 2,
+     "least": 0
+    },
+    "B6": {
+     "most": 2,
+     "least": 1
+    },
+    "B7": {
+     "most": 1,
+     "least": 2
+    },
+    "B8": {
+     "most": 1,
+     "least": 2
+    },
+    "B9": {
+     "most": 1,
+     "least": 0
+    },
+    "B10": {
+     "most": 2,
+     "least": 0
+    },
+    "B11": {
+     "most": 0,
+     "least": 1
+    },
+    "B12": {
+     "most": 0,
+     "least": 1
+    }
+   },
+   "lik": {
+    "C1": 4,
+    "C2": 4,
+    "C3": 4,
+    "C4": 4,
+    "C5": 4,
+    "C6": 4,
+    "C7": 4,
+    "C8": 4,
+    "C9": 4,
+    "C10": 4,
+    "C11": 4,
+    "C12": 4,
+    "C13": 4,
+    "C14": 4,
+    "C15": 4,
+    "C16": 4,
+    "C17": 4,
+    "C18": 4,
+    "C19": 4,
+    "C20": 4,
+    "C21": 4,
+    "C22": 4,
+    "C23": 4,
+    "C24": 4,
+    "C25": 4,
+    "C26": 4,
+    "D1": 4,
+    "D2": 4,
+    "D3": 4,
+    "D4": 4,
+    "D5": 4,
+    "I1": 4,
+    "I2": 4,
+    "I3": 4,
+    "I4": 4
+   },
+   "expected": {
+    "sjt": {
+     "H": 44.44444444444444,
+     "C": 22.22222222222222,
+     "A": 33.33333333333333,
+     "P": 33.33333333333333
+    },
+    "lik": {
+     "H": 58.333333333333336,
+     "C": 62.5,
+     "A": 58.333333333333336,
+     "P": 58.333333333333336
+    },
+    "scores": {
+     "H": 50,
+     "C": 38.33333333333333,
+     "A": 43.33333333333333,
+     "P": 43.33333333333333
+    },
+    "global": 43.75,
+    "dom": {
+     "H": 40.74074074074074,
+     "C": 51.85185185185185,
+     "A": 29.629629629629626,
+     "P": 55.55555555555556
+    },
+    "domHaut": "P",
+    "domBas": "A",
+    "ds": 0,
+    "inc": 4,
+    "uniforme": true,
+    "rapide": false,
+    "dsHaut": false,
+    "invalide": true,
+    "dureeS": 1505
+   },
+   "code": "TAC1.VDEwMDV+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH4xNTA1fDExMTExMTExMTExMXwxMzIxMzExMzMxMzIyMzIzMjEzMTEyMTJ8NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ=",
+   "decoded": {
+    "ident": {
+     "matricule": "T1005",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 0,
+     "A2": 0,
+     "A3": 0,
+     "A4": 0,
+     "A5": 0,
+     "A6": 0,
+     "A7": 0,
+     "A8": 0,
+     "A9": 0,
+     "A10": 0,
+     "A11": 0,
+     "A12": 0
+    },
+    "bloc": {
+     "B1": {
+      "most": 0,
+      "least": 2
+     },
+     "B2": {
+      "most": 1,
+      "least": 0
+     },
+     "B3": {
+      "most": 2,
+      "least": 0
+     },
+     "B4": {
+      "most": 0,
+      "least": 2
+     },
+     "B5": {
+      "most": 2,
+      "least": 0
+     },
+     "B6": {
+      "most": 2,
+      "least": 1
+     },
+     "B7": {
+      "most": 1,
+      "least": 2
+     },
+     "B8": {
+      "most": 1,
+      "least": 2
+     },
+     "B9": {
+      "most": 1,
+      "least": 0
+     },
+     "B10": {
+      "most": 2,
+      "least": 0
+     },
+     "B11": {
+      "most": 0,
+      "least": 1
+     },
+     "B12": {
+      "most": 0,
+      "least": 1
+     }
+    },
+    "lik": {
+     "C1": 4,
+     "C2": 4,
+     "C3": 4,
+     "C4": 4,
+     "C5": 4,
+     "C6": 4,
+     "C7": 4,
+     "C8": 4,
+     "C9": 4,
+     "C10": 4,
+     "C11": 4,
+     "C12": 4,
+     "C13": 4,
+     "C14": 4,
+     "C15": 4,
+     "C16": 4,
+     "C17": 4,
+     "C18": 4,
+     "C19": 4,
+     "C20": 4,
+     "C21": 4,
+     "C22": 4,
+     "C23": 4,
+     "C24": 4,
+     "C25": 4,
+     "C26": 4,
+     "D1": 4,
+     "D2": 4,
+     "D3": 4,
+     "D4": 4,
+     "D5": 4,
+     "I1": 4,
+     "I2": 4,
+     "I3": 4,
+     "I4": 4
+    },
+    "dureeS": 1505
+   }
+  },
+  {
+   "name": "inconsistent",
+   "ident": {
+    "matricule": "T1006",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 1506,
+   "sit": {
+    "A1": 2,
+    "A2": 3,
+    "A3": 3,
+    "A4": 0,
+    "A5": 1,
+    "A6": 2,
+    "A7": 3,
+    "A8": 1,
+    "A9": 0,
+    "A10": 3,
+    "A11": 3,
+    "A12": 3
+   },
+   "bloc": {
+    "B1": {
+     "most": 2,
+     "least": 0
+    },
+    "B2": {
+     "most": 1,
+     "least": 0
+    },
+    "B3": {
+     "most": 2,
+     "least": 0
+    },
+    "B4": {
+     "most": 2,
+     "least": 0
+    },
+    "B5": {
+     "most": 1,
+     "least": 0
+    },
+    "B6": {
+     "most": 1,
+     "least": 0
+    },
+    "B7": {
+     "most": 1,
+     "least": 2
+    },
+    "B8": {
+     "most": 2,
+     "least": 1
+    },
+    "B9": {
+     "most": 0,
+     "least": 2
+    },
+    "B10": {
+     "most": 2,
+     "least": 0
+    },
+    "B11": {
+     "most": 2,
+     "least": 0
+    },
+    "B12": {
+     "most": 1,
+     "least": 2
+    }
+   },
+   "lik": {
+    "C1": 3,
+    "C2": 1,
+    "C3": 1,
+    "C4": 5,
+    "C5": 2,
+    "C6": 3,
+    "C7": 2,
+    "C8": 5,
+    "C9": 5,
+    "C10": 4,
+    "C11": 4,
+    "C12": 3,
+    "C13": 3,
+    "C14": 5,
+    "C15": 2,
+    "C16": 5,
+    "C17": 3,
+    "C18": 1,
+    "C19": 1,
+    "C20": 3,
+    "C21": 1,
+    "C22": 1,
+    "C23": 1,
+    "C24": 2,
+    "C25": 2,
+    "C26": 1,
+    "D1": 1,
+    "D2": 5,
+    "D3": 1,
+    "D4": 2,
+    "D5": 5,
+    "I1": 1,
+    "I2": 5,
+    "I3": 5,
+    "I4": 5
+   },
+   "expected": {
+    "sjt": {
+     "H": 44.44444444444444,
+     "C": 44.44444444444444,
+     "A": 44.44444444444444,
+     "P": 22.22222222222222
+    },
+    "lik": {
+     "H": 20.833333333333336,
+     "C": 53.125,
+     "A": 37.5,
+     "P": 41.66666666666667
+    },
+    "scores": {
+     "H": 35,
+     "C": 47.916666666666664,
+     "A": 41.666666666666664,
+     "P": 30
+    },
+    "global": 38.64583333333333,
+    "dom": {
+     "H": 40.74074074074074,
+     "C": 55.55555555555556,
+     "A": 55.55555555555556,
+     "P": 25.925925925925924
+    },
+    "domHaut": "C",
+    "domBas": "P",
+    "ds": 2,
+    "inc": 12,
+    "uniforme": false,
+    "rapide": false,
+    "dsHaut": false,
+    "invalide": true,
+    "dureeS": 1506
+   },
+   "code": "TAC1.VDEwMDZ+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH4xNTA2fDM0NDEyMzQyMTQ0NHwzMTIxMzEzMTIxMjEyMzMyMTMzMTMxMjN8MzExNTIzMjU1NDQzMzUyNTMxMTMxMTEyMjExNTEyNTE1NTU=",
+   "decoded": {
+    "ident": {
+     "matricule": "T1006",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 2,
+     "A2": 3,
+     "A3": 3,
+     "A4": 0,
+     "A5": 1,
+     "A6": 2,
+     "A7": 3,
+     "A8": 1,
+     "A9": 0,
+     "A10": 3,
+     "A11": 3,
+     "A12": 3
+    },
+    "bloc": {
+     "B1": {
+      "most": 2,
+      "least": 0
+     },
+     "B2": {
+      "most": 1,
+      "least": 0
+     },
+     "B3": {
+      "most": 2,
+      "least": 0
+     },
+     "B4": {
+      "most": 2,
+      "least": 0
+     },
+     "B5": {
+      "most": 1,
+      "least": 0
+     },
+     "B6": {
+      "most": 1,
+      "least": 0
+     },
+     "B7": {
+      "most": 1,
+      "least": 2
+     },
+     "B8": {
+      "most": 2,
+      "least": 1
+     },
+     "B9": {
+      "most": 0,
+      "least": 2
+     },
+     "B10": {
+      "most": 2,
+      "least": 0
+     },
+     "B11": {
+      "most": 2,
+      "least": 0
+     },
+     "B12": {
+      "most": 1,
+      "least": 2
+     }
+    },
+    "lik": {
+     "C1": 3,
+     "C2": 1,
+     "C3": 1,
+     "C4": 5,
+     "C5": 2,
+     "C6": 3,
+     "C7": 2,
+     "C8": 5,
+     "C9": 5,
+     "C10": 4,
+     "C11": 4,
+     "C12": 3,
+     "C13": 3,
+     "C14": 5,
+     "C15": 2,
+     "C16": 5,
+     "C17": 3,
+     "C18": 1,
+     "C19": 1,
+     "C20": 3,
+     "C21": 1,
+     "C22": 1,
+     "C23": 1,
+     "C24": 2,
+     "C25": 2,
+     "C26": 1,
+     "D1": 1,
+     "D2": 5,
+     "D3": 1,
+     "D4": 2,
+     "D5": 5,
+     "I1": 1,
+     "I2": 5,
+     "I3": 5,
+     "I4": 5
+    },
+    "dureeS": 1506
+   }
+  },
+  {
+   "name": "partial",
+   "ident": {
+    "matricule": "T1007",
+    "filiale": "SUNU Services",
+    "categorie": "Manager",
+    "famille": "Support (RH, finance, IT, communication, juridique)",
+    "campagne": "T0"
+   },
+   "dureeS": 1507,
+   "sit": {
+    "A1": 3,
+    "A2": 1,
+    "A4": 3,
+    "A5": 3,
+    "A6": 2,
+    "A7": 2,
+    "A8": 2,
+    "A9": 3,
+    "A10": 3,
+    "A11": 3,
+    "A12": 3
+   },
+   "bloc": {
+    "B1": {
+     "most": 0,
+     "least": 1
+    },
+    "B2": {
+     "most": 0,
+     "least": 1
+    },
+    "B3": {
+     "most": 2,
+     "least": 0
+    },
+    "B4": {
+     "most": 0,
+     "least": 1
+    },
+    "B6": {
+     "most": 0,
+     "least": 2
+    },
+    "B7": {
+     "most": 2,
+     "least": 0
+    },
+    "B8": {
+     "most": 2,
+     "least": 0
+    },
+    "B9": {
+     "most": 0,
+     "least": 1
+    },
+    "B10": {
+     "most": 2,
+     "least": 0
+    },
+    "B11": {
+     "most": 1,
+     "least": 2
+    },
+    "B12": {
+     "most": 2,
+     "least": 1
+    }
+   },
+   "lik": {
+    "C7": 5,
+    "C8": 3,
+    "C9": 4,
+    "C10": 3,
+    "C11": 4,
+    "C12": 4,
+    "C13": 4,
+    "C14": 5,
+    "C15": 4,
+    "C16": 2,
+    "C17": 5,
+    "C18": 5,
+    "C19": 5,
+    "C20": 4,
+    "C21": 2,
+    "C22": 5,
+    "C23": 4,
+    "C24": 5,
+    "C25": 1,
+    "C26": 2,
+    "D1": 2,
+    "D2": 2,
+    "D3": 2,
+    "D4": 2,
+    "D5": 2,
+    "I2": 4,
+    "I3": 5,
+    "I4": 2
+   },
+   "expected": {
+    "sjt": {
+     "H": 33.33333333333333,
+     "C": 22.22222222222222,
+     "A": 22.22222222222222,
+     "P": 22.22222222222222
+    },
+    "lik": {
+     "H": null,
+     "C": 75,
+     "A": 70.83333333333334,
+     "P": 45.83333333333333
+    },
+    "scores": {
+     "H": 33.33333333333333,
+     "C": 43.33333333333333,
+     "A": 41.66666666666667,
+     "P": 31.666666666666664
+    },
+    "global": 37.5,
+    "dom": {
+     "H": 33.33333333333333,
+     "C": 48.148148148148145,
+     "A": 66.66666666666666,
+     "P": 25.925925925925924
+    },
+    "domHaut": "A",
+    "domBas": "P",
+    "ds": 0,
+    "inc": 0,
+    "uniforme": false,
+    "rapide": false,
+    "dsHaut": false,
+    "invalide": false,
+    "dureeS": 1507
+   },
+   "code": "TAC1.VDEwMDd+U1VOVSBTZXJ2aWNlc35NYW5hZ2VyflN1cHBvcnQgKFJILCBmaW5hbmNlLCBJVCwgY29tbXVuaWNhdGlvbiwganVyaWRpcXVlKX5UMH4xNTA3fDQyLTQ0MzMzNDQ0NHwxMjEyMzExMi0tMTMzMTMxMTIzMTIzMzJ8LS0tLS0tNTM0MzQ0NDU0MjU1NTQyNTQ1MTIyMjIyMi00NTI=",
+   "decoded": {
+    "ident": {
+     "matricule": "T1007",
+     "filiale": "SUNU Services",
+     "categorie": "Manager",
+     "famille": "Support (RH, finance, IT, communication, juridique)",
+     "campagne": "T0"
+    },
+    "sit": {
+     "A1": 3,
+     "A2": 1,
+     "A4": 3,
+     "A5": 3,
+     "A6": 2,
+     "A7": 2,
+     "A8": 2,
+     "A9": 3,
+     "A10": 3,
+     "A11": 3,
+     "A12": 3
+    },
+    "bloc": {
+     "B1": {
+      "most": 0,
+      "least": 1
+     },
+     "B2": {
+      "most": 0,
+      "least": 1
+     },
+     "B3": {
+      "most": 2,
+      "least": 0
+     },
+     "B4": {
+      "most": 0,
+      "least": 1
+     },
+     "B6": {
+      "most": 0,
+      "least": 2
+     },
+     "B7": {
+      "most": 2,
+      "least": 0
+     },
+     "B8": {
+      "most": 2,
+      "least": 0
+     },
+     "B9": {
+      "most": 0,
+      "least": 1
+     },
+     "B10": {
+      "most": 2,
+      "least": 0
+     },
+     "B11": {
+      "most": 1,
+      "least": 2
+     },
+     "B12": {
+      "most": 2,
+      "least": 1
+     }
+    },
+    "lik": {
+     "C7": 5,
+     "C8": 3,
+     "C9": 4,
+     "C10": 3,
+     "C11": 4,
+     "C12": 4,
+     "C13": 4,
+     "C14": 5,
+     "C15": 4,
+     "C16": 2,
+     "C17": 5,
+     "C18": 5,
+     "C19": 5,
+     "C20": 4,
+     "C21": 2,
+     "C22": 5,
+     "C23": 4,
+     "C24": 5,
+     "C25": 1,
+     "C26": 2,
+     "D1": 2,
+     "D2": 2,
+     "D3": 2,
+     "D4": 2,
+     "D5": 2,
+     "I2": 4,
+     "I3": 5,
+     "I4": 2
+    },
+    "dureeS": 1507
+   }
+  }
+ ],
+ "unicode": {
+  "code": "TAC1.w6kxflNVTlUgQXNzdXJhbmNlcyBWaWUgQ8O0dGUgZCdJdm9pcmV+TWFuYWdlcn5Nw6l0aWVyflQrMTJ+MHwtLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t",
+  "decoded": {
+   "ident": {
+    "matricule": "é1",
+    "filiale": "SUNU Assurances Vie Côte d'Ivoire",
+    "categorie": "Manager",
+    "famille": "Métier",
+    "campagne": "T+12"
+   },
+   "sit": {},
+   "bloc": {},
+   "lik": {},
+   "dureeS": null
+  }
+ }
+}

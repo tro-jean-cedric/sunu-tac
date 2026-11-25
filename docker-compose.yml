@@ -1,0 +1,36 @@
+# Full stack for an intranet server:  docker compose -f docker-compose.yml up -d --build
+# (without -f, docker-compose.override.yml is merged in: dev mode with hot reload)
+# Then sync the directory (LDAP, on the SUNU network) or restore a backup — see README.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: tac
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tac}
+      POSTGRES_DB: tac
+    volumes: [tac-db:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tac"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    env_file: [.env]
+    environment:
+      DATABASE_URL: postgresql+psycopg://tac:${POSTGRES_PASSWORD:-tac}@db:5432/tac
+      TTS_CACHE_DIR: /data/tts-cache  # synthesised question audio survives rebuilds
+    volumes: [tac-tts:/data/tts-cache]
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+
+  web:
+    build: { context: ., dockerfile: frontend/Dockerfile }
+    ports: ["8080:80"]
+    depends_on: [api]
+    restart: unless-stopped
+
+volumes:
+  tac-db:
+  tac-tts:

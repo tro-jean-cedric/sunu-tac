@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TAC-SUNU — Console de dépouillement</title>
+<meta name="description" content="Dépouillement des réponses au Test d'Alignement Culturel SUNU. Usage interne DRH.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* Colonne unique centrée ; une question par écran en parties A et B, items groupés en partie C. */
+:root{
+  --bg:#FBF8F6; --surface:#FFFFFF; --raised:#F4EDEA;
+  --fg:#231A1C; --muted:#6E5F62; --line:#E3D5D7;
+  --brand:#6B0F1E; --accent:#A6192E; --gold:#B5862F;
+  --ok:#2E6E5E; --warn:#B5862F; --bad:#A6192E;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --r:10px; --maxw:720px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171113; --surface:#211819; --raised:#2B2022; --fg:#F2E9E9; --muted:#AD9A9D; --line:#3B2C2F;
+  --brand:#E8B9C0; --accent:#E8899A; --gold:#DCB26A; --ok:#7FC3AF; --warn:#DCB26A; --bad:#E8899A;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171113; --surface:#211819; --raised:#2B2022; --fg:#F2E9E9; --muted:#AD9A9D; --line:#3B2C2F;
+  --brand:#E8B9C0; --accent:#E8899A; --gold:#DCB26A; --ok:#7FC3AF; --warn:#DCB26A; --bad:#E8899A;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(1.7rem,5vw,2.3rem);letter-spacing:-.01em}
+h2{font-size:1.3rem;margin-block:0 .5rem}
+h3{font-size:1.05rem;margin-block:0 .35rem}
+p{margin:0 0 .85rem}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 .5rem}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* bandeau */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--brand);color:#fff}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:11;background:var(--brand)}
+.topbar-in{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:9px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.topbar strong{font-family:var(--display);font-weight:600;font-size:.98rem}
+.topbar .sep{color:#E8B9C0;font-size:.8rem}
+.bar{height:3px;background:rgba(255,255,255,.22)}
+.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .25s ease}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row>*{min-width:0}
+
+/* boutons */
+button{font:inherit}
+.btn{appearance:none;border:1px solid var(--brand);background:var(--brand);color:#fff;border-radius:8px;padding:11px 20px;font-weight:600;font-size:.94rem;cursor:pointer}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--brand);border-color:var(--line)}
+.btn.ghost:hover{background:var(--raised);border-color:var(--brand)}
+.btn.sm{padding:7px 13px;font-size:.84rem}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* options */
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.opt{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:12px 14px;cursor:pointer;text-align:left;width:100%;color:inherit;line-height:1.45}
+.opt:hover{border-color:var(--accent);background:var(--raised)}
+.opt[aria-pressed="true"]{border-color:var(--brand);background:var(--raised);box-shadow:inset 3px 0 0 var(--brand)}
+.opt .mk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.72rem;font-weight:600;color:var(--muted);margin-top:1px}
+.opt[aria-pressed="true"] .mk{background:var(--brand);border-color:var(--brand);color:#fff}
+
+/* blocs choix forcés */
+.fc{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.fc-head,.fc-row{display:grid;grid-template-columns:1fr 62px 62px;gap:0;align-items:center}
+.fc-head{background:var(--raised);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.fc-head div{padding:9px 12px;text-align:center}
+.fc-head div:first-child{text-align:left}
+.fc-row{border-top:1px solid var(--line)}
+.fc-row .t{padding:12px 14px;line-height:1.45;font-size:.95rem}
+.pick{display:grid;place-items:center;padding:10px 0}
+.pick button{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center;color:var(--muted);font-size:.8rem}
+.pick button:hover{border-color:var(--accent)}
+.pick button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.pick.least button[aria-pressed="true"]{background:var(--muted);border-color:var(--muted)}
+
+/* likert */
+.lk{border-top:1px solid var(--line);padding:15px 0}
+.lk:first-child{border-top:0;padding-top:4px}
+.lk .q{margin-bottom:10px;line-height:1.45}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.scale button{border:1px solid var(--line);background:var(--surface);border-radius:7px;padding:8px 3px;cursor:pointer;color:var(--muted);font-size:.7rem;line-height:1.25;display:flex;flex-direction:column;align-items:center;gap:3px}
+.scale button b{font-family:var(--display);font-size:1rem;color:var(--fg);font-weight:600}
+.scale button:hover{border-color:var(--accent)}
+.scale button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.scale button[aria-pressed="true"] b{color:#fff}
+
+/* champs */
+label.f{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:5px}
+input,select,textarea{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+textarea{min-height:88px;resize:vertical;font-size:.86rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+
+/* résultats */
+.score-hero{text-align:center;padding:24px 16px;background:var(--brand);color:#fff;border-radius:var(--r)}
+.score-hero .n{font-family:var(--display);font-size:3.6rem;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.score-hero .lb{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:8px}
+.pill{display:inline-block;margin-top:10px;padding:5px 14px;border-radius:999px;background:var(--gold);color:#231A1C;font-weight:600;font-size:.84rem}
+.dim{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.dim:first-child{border-top:0}
+.dim .nm{flex:0 0 110px;font-weight:600;font-size:.92rem}
+.dim .tr{flex:1 1 auto;height:8px;background:var(--raised);border-radius:999px;overflow:hidden;min-width:60px}
+.dim .tr i{display:block;height:100%;background:var(--accent);border-radius:999px}
+.dim .vl{flex:0 0 46px;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.note{border-left:3px solid var(--gold);background:var(--raised);padding:12px 15px;border-radius:0 8px 8px 0;font-size:.9rem}
+.note.warn{border-left-color:var(--bad)}
+code.codebox{display:block;word-break:break-all;background:var(--raised);border:1px solid var(--line);border-radius:8px;padding:11px 13px;font-size:.78rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5}
+
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.scrollx{overflow-x:auto}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:.86rem;z-index:30}
+
+/* --- ajouts pages autonomes --- */
+html,body{-webkit-text-size-adjust:100%}
+.big{font-family:var(--display);font-size:2.2rem;font-weight:600;line-height:1.1}
+.drop{border:1.5px dashed var(--line);border-radius:8px;padding:26px 16px;text-align:center;color:var(--muted);
+      font-size:.9rem;cursor:pointer;background:var(--raised)}
+.drop:hover,.drop.over{border-color:var(--accent);color:var(--fg)}
+details summary::-webkit-details-marker{display:none}
+details summary{list-style:none}
+details summary::before{content:"▸ ";color:var(--accent)}
+details[open] summary::before{content:"▾ "}
+@media print{
+  .no-print,.topbar{display:none!important}
+  body{background:#fff;color:#000}
+  .card{border-color:#ccc;break-inside:avoid}
+  .score-hero{background:#fff!important;color:#000!important;border:2px solid #6B0F1E}
+  .pill{background:#eee!important;color:#000!important}
+  .wrap{padding-block:0}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <strong>TAC&#8209;SUNU</strong>
+    <span class="sep">Console de dépouillement — usage DRH</span>
+  </div>
+  <div class="bar"><i id="prog" style="width:100%"></i></div>
+</div>
+<div class="wrap"><main id="app" class="stack" style="padding-top:26px"></main></div>
+<script>
+/* ============ RÉFÉRENTIEL ============ */
+const DIMS=[["H","Héritage"],["C","Collaboration"],["A","Autonomie"],["P","Performance"]];
+const DIMNAME=Object.fromEntries(DIMS);
+
+const SITUATIONS=[
+ {id:"A1",dim:"H",txt:"Une personne dont l'avis compte pour votre service vous demande de passer outre une étape de contrôle pour gagner trois jours. L'opération est courante, l'étape vous paraît formelle, et refuser créera une tension.",
+  o:[["Vous maintenez l'étape, expliquez à quoi elle sert et cherchez avec elle comment gagner du temps ailleurs.",3],
+     ["Vous maintenez l'étape et signalez la demande à votre hiérarchie, sans en reparler à l'intéressé.",2],
+     ["Vous demandez à votre manager de trancher, en précisant qui formule la demande.",1],
+     ["Vous passez outre à titre exceptionnel, en gardant une trace écrite de la demande.",0]]},
+ {id:"A2",dim:"H",txt:"Le Groupe demande de déployer dans votre entité une procédure qui fonctionne bien ailleurs. Chez vous, plusieurs conditions nécessaires ne sont pas réunies.",
+  o:[["Vous déployez tel quel : c'est un standard Groupe, l'adaptation viendra ensuite.",1],
+     ["Vous remontez une analyse documentée des écarts et proposez une version adaptée, testée sur un périmètre réduit.",3],
+     ["Vous déployez en apparence et laissez les équipes continuer comme avant.",0],
+     ["Vous signalez l'écart en réunion et appliquez la consigne en attendant une décision du Groupe.",2]]},
+ {id:"A3",dim:"H",txt:"Un nouveau collaborateur, diplômé à l'étranger, vous confie qu'il voit SUNU comme une étape avant un vrai groupe international.",
+  o:[["Vous ne relevez pas : chacun ses ambitions.",0],
+     ["Vous lui racontez l'histoire du Groupe et ce qu'elle change concrètement dans la façon de travailler, puis vous l'invitez à juger sur pièces.",3],
+     ["Vous lui rappelez que SUNU est présent dans 17 pays et constitue bien un groupe international.",2],
+     ["Vous en parlez à son manager pour qu'il le recadre.",1]]},
+ {id:"A4",dim:"C",txt:"Vous tenez un sujet qui compte dans les résultats de votre service. Une autre équipe du Groupe le traiterait mieux et plus vite, mais le bénéfice lui serait attribué.",
+  o:[["Vous le gardez : vos objectifs sont vos objectifs.",0],
+     ["Vous le transférez et informez votre manager de l'impact sur vos résultats.",3],
+     ["Vous le gardez en sollicitant l'autre équipe en appui technique.",2],
+     ["Vous laissez l'autre équipe le réclamer si elle y tient.",1]]},
+ {id:"A5",dim:"C",txt:"Vous apprenez en réunion qu'une décision prise dans trois mois va modifier la façon de travailler de deux autres équipes, dont une dans un autre pays. Rien n'a été dit sur la diffusion de cette information.",
+  o:[["Vous attendez la communication officielle.",2],
+     ["Vous vérifiez auprès du porteur ce qui est partageable, puis vous informez les deux équipes.",3],
+     ["Vous en parlez à l'équipe de votre pays, que vous connaissez bien.",1],
+     ["Vous ne dites rien : l'information ne vous a pas été confiée pour être relayée.",0]]},
+ {id:"A6",dim:"C",txt:"Une erreur commise dans votre équipe a produit des conséquences visibles à l'extérieur du service. Vous l'avez corrigée. La même erreur est possible dans d'autres entités qui travaillent de la même façon.",
+  o:[["Vous corrigez et passez à la suite : le problème est réglé chez vous.",0],
+     ["Vous documentez la cause et la correction, et les partagez avec les autres entités concernées.",3],
+     ["Vous prévenez oralement un collègue d'une autre entité que vous connaissez bien.",1],
+     ["Vous signalez l'incident à votre manager en lui laissant le soin d'alerter.",2]]},
+ {id:"A7",dim:"A",txt:"Un interlocuteur important demande une solution inhabituelle mais parfaitement régulière. Votre délégation vous permet de décider. Vous n'avez jamais traité ce cas, et une validation Groupe prendrait trois semaines.",
+  o:[["Vous remontez au Groupe par prudence.",2],
+     ["Vous décidez dans votre délégation, documentez votre raisonnement et informez votre manager.",3],
+     ["Vous refusez : ce n'est pas la pratique habituelle.",0],
+     ["Vous décidez dans votre délégation sans en informer personne.",1]]},
+ {id:"A8",dim:"A",txt:"Un dossier que vous pilotez accuse deux mois de retard. Les causes sont mixtes : un intervenant extérieur défaillant, et une décision que vous aviez validée trop vite.",
+  o:[["En comité, vous présentez le retard en expliquant la défaillance de l'intervenant extérieur.",1],
+     ["Vous présentez le retard, ses deux causes dont la vôtre, et le plan de rattrapage.",3],
+     ["Vous attendez d'avoir rattrapé une partie du retard avant d'en parler.",0],
+     ["Vous présentez le retard et demandez un arbitrage sur les moyens, sans détailler les causes.",2]]},
+ {id:"A9",dim:"A",txt:"On vous demande d'expliquer pourquoi deux équipes comparables obtiennent des résultats très différents sur la même activité. Le responsable de celle qui est en retard explique que son contexte est plus difficile.",
+  o:[["Vous reprenez son explication dans votre analyse : il connaît son contexte mieux que vous.",0],
+     ["Vous comparez les données disponibles — charge, moyens, nature des dossiers, organisation — avant de conclure.",3],
+     ["Vous concluez que le contexte n'y est pour rien : les deux équipes ont les mêmes moyens.",1],
+     ["Vous demandez à l'équipe performante de décrire sa méthode, et vous la comparez à l'autre.",2]]},
+ {id:"A10",dim:"P",txt:"Les délais de traitement de votre service se dégradent. Les équipes évoquent la charge, les destinataires de votre travail se plaignent, et vous n'avez pas de données fiables sur les causes.",
+  o:[["Vous demandez de traiter en priorité les demandes les plus anciennes.",1],
+     ["Vous analysez un échantillon de dossiers et interrogez ceux qui se plaignent avant d'agir.",3],
+     ["Vous demandez un renfort temporaire.",2],
+     ["Vous attendez le prochain reporting pour y voir clair.",0]]},
+ {id:"A11",dim:"P",txt:"Votre semaine est saturée. Votre manager demande une analyse pour un comité, un interlocuteur réclame une réponse en attente depuis plusieurs jours, et un chantier Groupe attend votre contribution depuis deux semaines.",
+  o:[["Vous traitez d'abord ce qui est le plus urgent pour votre manager.",1],
+     ["Vous arbitrez selon la contribution aux priorités stratégiques et annoncez ce que vous ne ferez pas.",3],
+     ["Vous essayez de tout faire, quitte à rendre des livrables moyens.",0],
+     ["Vous demandez à votre manager d'arbitrer entre les trois.",2]]},
+ {id:"A12",dim:"P",txt:"Vous avez mis en place il y a six mois une amélioration dans votre service. L'équipe la trouve positive. On vous demande s'il faut l'étendre aux autres entités.",
+  o:[["Vous recommandez de l'étendre : le ressenti des équipes est bon.",1],
+     ["Vous comparez les indicateurs avant et après, et recueillez l'avis des destinataires, avant de vous prononcer.",3],
+     ["Vous recommandez de la poursuivre chez vous sans l'étendre, le temps d'y voir plus clair.",2],
+     ["Vous recommandez de l'étendre et passez au chantier suivant : l'essentiel est qu'elle soit en place.",0]]}
+];
+
+const BLOCS=[
+ {id:"B1",i:[["Je prends le temps de tenir mes collègues informés de ce qui les concerne.","C"],["Je tranche sans attendre quand la décision m'appartient.","A"],["Je vérifie l'effet réel de ce que je mets en place.","P"]]},
+ {id:"B2",i:[["Je tiens mes engagements, même quand cela me coûte.","H"],["Je réponds présent quand une autre équipe est en difficulté.","C"],["Je teste une solution plutôt que d'attendre une certitude.","A"]]},
+ {id:"B3",i:[["Je demande leur avis à ceux qui utilisent mon travail avant de changer une pratique.","P"],["J'adapte les solutions aux réalités de mon marché.","H"],["J'assume publiquement mes erreurs.","A"]]},
+ {id:"B4",i:[["Je partage mes bonnes pratiques avec d'autres entités.","C"],["Je concentre mon énergie sur ce qui compte le plus pour la stratégie.","P"],["Je parle avec fierté de l'histoire de notre Groupe.","H"]]},
+ {id:"B5",i:[["Je prends des initiatives sans attendre qu'on me les demande.","A"],["Je refuse les arrangements contraires à nos règles, même sous pression.","H"],["Je sais dire non à ce qui ne sert pas nos priorités.","P"]]},
+ {id:"B6",i:[["J'apprends des réussites et des erreurs des autres équipes.","C"],["Je rends compte de ce que je décide.","A"],["Je privilégie les solutions qui tiendront dans la durée.","H"]]},
+ {id:"B7",i:[["Je suis attentif à l'effet de mes décisions sur ceux qui reçoivent mon travail.","P"],["Je facilite le travail entre métiers qui ne se parlent pas.","C"],["Je m'appuie sur les faits pour ajuster mes actions.","A"]]},
+ {id:"B8",i:[["Je tiens parole même quand les circonstances changent.","H"],["Je vérifie que mon travail contribue aux objectifs du Groupe.","P"],["Je donne aux autres l'information utile avant qu'ils la demandent.","C"]]},
+ {id:"B9",i:[["J'ose proposer des choses qui n'ont jamais été faites ici.","A"],["Je m'appuie sur les retours de mes interlocuteurs pour progresser.","P"],["Je défends l'ancrage africain de nos solutions.","H"]]},
+ {id:"B10",i:[["Je soutiens mes collègues dans les moments de forte exigence.","C"],["J'agis avec la même rigueur quand personne ne contrôle.","H"],["Je prends la responsabilité des résultats de mon périmètre.","A"]]},
+ {id:"B11",i:[["Je suis les indicateurs de mon activité.","P"],["Je décide dans ma délégation sans faire remonter systématiquement.","A"],["Je fais circuler l'information entre pays.","C"]]},
+ {id:"B12",i:[["Je fais le lien entre ce que nous sommes aujourd'hui et notre histoire.","H"],["Je cherche la solution commune plutôt que celle de mon équipe.","C"],["Je concentre mes efforts là où l'impact est le plus fort.","P"]]}
+];
+
+const LIKERT=[
+ ["C1","H","H1",0,"Je parle de l'appartenance au Groupe SUNU comme d'un atout auprès de personnes extérieures au Groupe."],
+ ["C2","H","H1",0,"Je relie ce que fait mon équipe aujourd'hui à l'histoire et aux choix fondateurs du Groupe."],
+ ["C3","H","H2",0,"Avant d'adopter une solution venue d'ailleurs, je vérifie qu'elle tient compte de nos réalités locales."],
+ ["C4","H","H2",1,"Je privilégie la solution qui règle le problème immédiat, même si elle ne tiendra pas dans la durée."],
+ ["C5","H","H3",0,"Je tiens les délais et les engagements que j'annonce."],
+ ["C6","H","H3",1,"Il m'arrive de contourner une règle interne quand elle me paraît ralentir inutilement le travail."],
+ ["C7","C","C1",0,"J'accepte des arbitrages défavorables à mon périmètre quand l'intérêt du Groupe le justifie."],
+ ["C8","C","C1",1,"Je défends d'abord les résultats de mon équipe, avant ceux de l'ensemble."],
+ ["C9","C","C2",0,"Je transmets spontanément aux équipes concernées les informations qui les touchent."],
+ ["C10","C","C2",1,"J'attends qu'on me demande une information avant de la transmettre."],
+ ["C11","C","C3",0,"Je me rends disponible pour aider une autre équipe quand la charge monte."],
+ ["C12","C","C3",0,"Je réponds aux sollicitations de collègues d'autres entités dans des délais courts."],
+ ["C13","C","C4",0,"Je partage mes réussites et mes erreurs pour que d'autres en tirent parti."],
+ ["C14","C","C4",0,"Je m'inspire de ce qui a été fait ailleurs dans le Groupe avant de construire ma solution."],
+ ["C15","A","A1",0,"J'annonce moi-même les mauvaises nouvelles sur mes dossiers, sans attendre qu'on les découvre."],
+ ["C16","A","A1",1,"Quand un résultat n'est pas atteint, j'explique d'abord ce qui ne dépendait pas de moi."],
+ ["C17","A","A2",0,"Je teste une solution nouvelle même sans garantie de résultat."],
+ ["C18","A","A2",1,"J'évite de prendre des initiatives qui pourraient m'être reprochées."],
+ ["C19","A","A3",0,"Je m'appuie sur des données chiffrées pour trancher."],
+ ["C20","A","A3",0,"J'ajuste mes actions quand les résultats montrent que ma première approche ne marche pas."],
+ ["C21","P","P1",0,"Je recueille l'avis de ceux qui utilisent mon travail avant de modifier une pratique."],
+ ["C22","P","P1",1,"Je connais assez bien les attentes de mes interlocuteurs pour ne pas avoir besoin de les interroger."],
+ ["C23","P","P2",0,"Je vérifie qu'une tâche contribue aux priorités stratégiques avant de m'y engager."],
+ ["C24","P","P2",0,"Je dis explicitement ce que je ne ferai pas quand ma charge est saturée."],
+ ["C25","P","P3",0,"Je définis à l'avance comment je saurai qu'une action a réussi."],
+ ["C26","P","P3",1,"Je passe à l'action suivante sans avoir mesuré l'effet de la précédente."]
+].map(([id,dim,comp,rev,txt])=>({id,dim,comp,rev:!!rev,txt}));
+
+const VALIDITE=[
+ {id:"D1",k:"ds",txt:"Il ne m'est jamais arrivé d'être agacé par un collègue."},
+ {id:"D2",k:"ds",txt:"Je n'ai jamais laissé passer une échéance."},
+ {id:"D3",k:"ds",txt:"Je dis toujours exactement ce que je pense, en toute circonstance."},
+ {id:"D4",k:"ds",txt:"Il ne m'est jamais arrivé de reporter une tâche désagréable."},
+ {id:"D5",k:"ds",txt:"Je n'ai jamais rien dit dont j'aurais pu regretter les conséquences."},
+ {id:"I1",k:"inc",pair:"C9",opp:0,txt:"Les équipes concernées apprennent par moi ce qui les concerne."},
+ {id:"I2",k:"inc",pair:"C16",opp:1,txt:"Je commence par ce qui relève de moi quand j'analyse un échec."},
+ {id:"I3",k:"inc",pair:"C19",opp:0,txt:"Je demande des chiffres avant de décider."},
+ {id:"I4",k:"inc",pair:"C23",opp:1,txt:"Je m'engage sur des tâches sans vérifier leur lien avec nos priorités."}
+];
+
+
+
+
+
+
+/* ============ ÉTAT ============ */
+const LIKALL=LIKERT.concat(VALIDITE);
+
+
+
+/* ============ CALCUL DES SCORES ============ */
+function calcul(sit,bloc,lik,dureeS){
+  const sjt={},lk={},dom={};
+  DIMS.forEach(([d])=>{sjt[d]={p:0,max:0};lk[d]={s:0,n:0};dom[d]=0});
+  SITUATIONS.forEach(q=>{
+    sjt[q.dim].max+=3;
+    const c=sit[q.id];
+    if(c!=null&&q.o[c])sjt[q.dim].p+=q.o[c][1];
+  });
+  BLOCS.forEach(b=>{
+    const c=bloc[b.id];
+    if(!c||c.most==null||c.least==null||c.most===c.least)return;
+    dom[b.i[c.most][1]]+=2; dom[b.i[c.least][1]]-=1;
+  });
+  LIKERT.forEach(it=>{
+    const v=lik[it.id];
+    if(v==null)return;
+    lk[it.dim].s+=it.rev?(6-v):v; lk[it.dim].n++;
+  });
+  // désirabilité sociale
+  const ds=VALIDITE.filter(v=>v.k==="ds").reduce((a,v)=>a+(lik[v.id]===5?1:0),0);
+  // cohérence
+  let inc=0,incN=0;
+  VALIDITE.filter(v=>v.k==="inc").forEach(v=>{
+    const a=lik[v.id],b=lik[v.pair];
+    if(a==null||b==null)return;
+    const bb=v.opp?(6-b):b; inc+=Math.abs(a-bb); incN++;
+  });
+  if(incN&&incN<4)inc=Math.round(inc*4/incN);
+  // patron uniforme
+  const vals=LIKERT.map(it=>lik[it.id]).filter(v=>v!=null);
+  const freq={};vals.forEach(v=>freq[v]=(freq[v]||0)+1);
+  const uniforme=vals.length>=20&&Math.max(...Object.values(freq))/vals.length>0.8;
+  const rapide=dureeS!=null&&dureeS<720;
+  const dsHaut=ds>=3;
+  const scores={};
+  DIMS.forEach(([d])=>{
+    const a=sjt[d].max?sjt[d].p/sjt[d].max*100:null;
+    const c=lk[d].n?(lk[d].s-lk[d].n)/(4*lk[d].n)*100:null;
+    scores[d]=(a==null&&c==null)?null:(dsHaut||c==null)?a:(a==null?c:0.6*a+0.4*c);
+  });
+  const ok=DIMS.map(([d])=>scores[d]).filter(v=>v!=null);
+  const global=ok.length===4?ok.reduce((x,y)=>x+y,0)/4:null;
+  const domPct={};DIMS.forEach(([d])=>domPct[d]=(dom[d]+9)/27*100);
+  const srt=DIMS.map(([d])=>[d,domPct[d]]).sort((a,b)=>b[1]-a[1]);
+  return{sjt:Object.fromEntries(DIMS.map(([d])=>[d,sjt[d].max?sjt[d].p/sjt[d].max*100:null])),
+         lik:Object.fromEntries(DIMS.map(([d])=>[d,lk[d].n?(lk[d].s-lk[d].n)/(4*lk[d].n)*100:null])),
+         scores,global,dom:domPct,domHaut:srt[0][0],domBas:srt[3][0],
+         ds,inc,uniforme,rapide,dsHaut,
+         invalide:uniforme||inc>=8,dureeS};
+}
+
+/* ============ CODE DE RESTITUTION ============ */
+function decode(code){
+  try{
+    const raw=decodeURIComponent(escape(atob(code.trim().replace(/^TAC1\./,""))));
+    const[meta,a,b,c]=raw.split("|");
+    const[matricule,filiale,categorie,famille,campagne,duree]=meta.split("~");
+    const sit={},bloc={},lik={};
+    SITUATIONS.forEach((q,i)=>{const ch=a[i];if(ch&&ch!=="-")sit[q.id]=+ch-1});
+    BLOCS.forEach((x,i)=>{const m=b[i*2],l=b[i*2+1];if(m&&m!=="-"&&l&&l!=="-")bloc[x.id]={most:+m-1,least:+l-1}});
+    LIKALL.forEach((it,i)=>{const ch=c[i];if(ch&&ch!=="-")lik[it.id]=+ch});
+    return{ident:{matricule,filiale,categorie,famille,campagne},sit,bloc,lik,dureeS:+duree||null};
+  }catch(e){return null}
+}
+
+
+
+const DIMKEY=["H","C","A","P"];
+const BANDES=[[85,"Ambassadeur"],[65,"Aligné"],[45,"En développement"],[0,"Éloigné"]];
+function bande(v){for(const[s,n]of BANDES)if(v>=s)return n;return"—"}
+const STORE="tac-sunu-console-v1";
+let ROWS=[];
+const $=s=>document.querySelector(s), app=$("#app");
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function sauver(){try{localStorage.setItem(STORE,JSON.stringify(ROWS))}catch(e){}}
+function charger(){try{ROWS=JSON.parse(localStorage.getItem(STORE)||"[]")||[]}catch(e){ROWS=[]}}
+function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2400)}
+function moy(a){return a.length?a.reduce((x,y)=>x+y,0)/a.length:null}
+function cle(r){return (r.matricule||"?")+"|"+(r.campagne||"?")}
+
+function ajouter(d,source){
+  if(!d)return false;
+  const r=calcul(d.sit,d.bloc,d.lik,d.dureeS);
+  const row={matricule:d.ident?d.ident.matricule:d.matricule,filiale:d.ident?d.ident.filiale:d.filiale,
+    categorie:d.ident?d.ident.categorie:d.categorie,famille:d.ident?d.ident.famille:d.famille,
+    campagne:d.ident?d.ident.campagne:d.campagne,date:d.date||new Date().toISOString(),
+    scores:r.scores,global:r.global,dom:r.dom,domHaut:r.domHaut,domBas:r.domBas,
+    ds:r.ds,inc:r.inc,invalide:r.invalide,source:source};
+  const i=ROWS.findIndex(x=>cle(x)===cle(row));
+  if(i>=0)ROWS[i]=row; else ROWS.push(row);
+  return true;
+}
+function importerCode(txt){const d=decode(txt);return d?ajouter(d,"code"):false}
+function importerFichier(obj){
+  if(!obj||!obj.sit)return false;
+  return ajouter({ident:{matricule:obj.matricule,filiale:obj.filiale,categorie:obj.categorie,famille:obj.famille,campagne:obj.campagne},
+    sit:obj.sit,bloc:obj.bloc,lik:obj.lik,dureeS:obj.dureeS,date:obj.date},"fichier");
+}
+
+function groupe(cleNom){
+  const m={};ROWS.filter(r=>!r.invalide).forEach(r=>{const k=r[cleNom]||"Non renseigné";(m[k]=m[k]||[]).push(r)});
+  return Object.entries(m).sort((a,b)=>b[1].length-a[1].length);
+}
+function tableau(titre,cleNom){
+  const g=groupe(cleNom);
+  if(!g.length)return"";
+  return `<div class="card"><h2>${titre}</h2><div class="scrollx"><table>
+    <thead><tr><th>${titre}</th><th class="n">N</th><th class="n">Global</th>${DIMS.map(([,n])=>`<th class="n">${n.slice(0,4)}</th>`).join("")}<th class="n">Aligné+</th></tr></thead>
+    <tbody>${g.map(([k,rs])=>{
+      const petit=rs.length<5;
+      const al=rs.filter(r=>r.global>=65).length;
+      return `<tr><td>${esc(k)}</td><td class="n">${rs.length}</td>
+        <td class="n">${petit?"<span class='muted'>n&lt;5</span>":Math.round(moy(rs.map(r=>r.global)))}</td>
+        ${DIMKEY.map(d=>`<td class="n">${petit?"—":Math.round(moy(rs.map(r=>r.scores[d]).filter(v=>v!=null)))}</td>`).join("")}
+        <td class="n">${petit?"—":Math.round(al/rs.length*100)+"&#8239;%"}</td></tr>`}).join("")}
+    </tbody></table></div>
+    <p class="small muted" style="margin:10px 0 0">Les groupes de moins de cinq répondants ne sont pas détaillés, pour ne pas rendre les résultats identifiables.</p></div>`;
+}
+
+function render(){
+  const valides=ROWS.filter(r=>!r.invalide), n=valides.length;
+  const parDim={};DIMKEY.forEach(d=>parDim[d]=moy(valides.map(r=>r.scores[d]).filter(v=>v!=null)));
+  const campagnes=[...new Set(ROWS.map(r=>r.campagne).filter(Boolean))];
+  app.innerHTML=`<div class="stack">
+    <div><p class="eyebrow">Usage interne DRH — ne pas diffuser</p><h1>Dépouillement de la campagne</h1>
+      <p class="muted">Cette page ne communique avec aucun serveur. Les données importées restent dans ce navigateur, sur cet ordinateur.</p></div>
+
+    <div class="card no-print"><h2>Importer des réponses</h2>
+      <p class="small muted">Déposez les fichiers <code>.json</code> reçus des répondants, ou collez leurs codes de restitution, un par ligne.</p>
+      <div id="drop" class="drop">Glissez ici les fichiers .json, ou cliquez pour les choisir
+        <input type="file" id="file" accept=".json,application/json" multiple hidden></div>
+      <label class="f" for="codes" style="margin-top:14px">Codes de restitution</label>
+      <textarea id="codes" placeholder="TAC1.xxxxx&#10;TAC1.yyyyy"></textarea>
+      <div class="row" style="margin-top:10px">
+        <button class="btn sm" id="impCodes">Importer les codes</button>
+        ${n?`<button class="btn ghost sm" id="csv">Exporter en CSV</button>`:""}
+        ${ROWS.length?`<button class="btn ghost sm" id="vider">Vider la base</button>`:""}</div>
+      <p class="small" id="etat" style="margin:10px 0 0"></p></div>
+
+    ${!ROWS.length?`<div class="note">Aucune réponse importée pour l'instant. Les résultats collectifs apparaîtront ici dès le premier import.</div>`:`
+    <div class="row">
+      <div class="card" style="flex:1 1 140px;text-align:center"><div class="small muted">Répondants</div><div class="big tnum">${n}</div></div>
+      <div class="card" style="flex:1 1 140px;text-align:center"><div class="small muted">Global moyen</div><div class="big tnum">${n?Math.round(moy(valides.map(r=>r.global))):"—"}</div></div>
+      <div class="card" style="flex:1 1 140px;text-align:center"><div class="small muted">Aligné ou plus</div><div class="big tnum">${n?Math.round(valides.filter(r=>r.global>=65).length/n*100)+"&#8239;%":"—"}</div></div>
+    </div>
+    ${ROWS.length-n?`<div class="note warn small">${ROWS.length-n} passation${ROWS.length-n>1?"s":""} écartée${ROWS.length-n>1?"s":""} par les contrôles de validité. ${ROWS.length-n>1?"Elles sont à refaire.":"Elle est à refaire."}</div>`:""}
+    ${campagnes.length>1?`<div class="note small">Plusieurs campagnes sont présentes (${campagnes.map(esc).join(", ")}). Les moyennes ci-dessous les agrègent : exportez en CSV pour comparer T0 et T+X.</div>`:""}
+
+    <div class="card"><h2>Par principe</h2>
+      ${DIMS.map(([d,nm])=>`<div class="dim"><span class="nm">${nm}</span><span class="tr"><i style="width:${parDim[d]?Math.round(parDim[d]):0}%"></i></span><span class="vl">${parDim[d]!=null?Math.round(parDim[d]):"—"}</span></div>`).join("")}</div>
+
+    <div class="card"><h2>Comportements les plus faibles</h2>
+      <p class="small muted" style="margin:-4px 0 12px">Classement des quatre principes, du plus faible au plus solide. Les trois premiers orientent le plan d'actions.</p>
+      <div class="scrollx"><table><thead><tr><th class="n">Rang</th><th>Principe</th><th class="n">Score</th><th>Priorité</th></tr></thead><tbody>
+      ${DIMS.map(([d,nm])=>[d,nm,parDim[d]]).filter(x=>x[2]!=null).sort((a,b)=>a[2]-b[2]).map((x,i)=>
+        `<tr><td class="n">${i+1}</td><td>${x[1]}</td><td class="n">${Math.round(x[2])}</td><td>${i<2?"<strong style='color:var(--bad)'>Priorité</strong>":""}</td></tr>`).join("")}
+      </tbody></table></div></div>
+
+    ${tableau("Entité","filiale")}
+    ${tableau("Catégorie","categorie")}
+    ${tableau("Famille de métier","famille")}
+
+    <div class="card"><h2>Répartition des profils</h2>
+      <div class="scrollx"><table><thead><tr><th>Profil</th><th class="n">Effectif</th><th class="n">Part</th></tr></thead><tbody>
+      ${["Ambassadeur","Aligné","En développement","Éloigné"].map(p=>{
+        const c=valides.filter(r=>bande(r.global)===p).length;
+        return `<tr><td>${p}</td><td class="n">${c}</td><td class="n">${n?Math.round(c/n*100):0}&#8239;%</td></tr>`}).join("")}
+      </tbody></table></div></div>
+
+    <div class="card"><h2>Détail individuel</h2>
+      <p class="small muted" style="margin:-4px 0 12px">Donnée nominative : accès limité à la DRH Groupe et au manager direct.</p>
+      <div class="scrollx"><table><thead><tr><th>Matricule</th><th>Entité</th><th>Campagne</th><th class="n">Global</th>${DIMS.map(([,nm])=>`<th class="n">${nm.slice(0,4)}</th>`).join("")}<th>Profil</th><th class="n">DS</th><th class="n">INC</th></tr></thead><tbody>
+      ${ROWS.slice().sort((a,b)=>(b.global||0)-(a.global||0)).map(r=>`<tr${r.invalide?' style="opacity:.5"':''}>
+        <td>${esc(r.matricule)}</td><td>${esc(r.filiale)}</td><td>${esc(r.campagne)}</td>
+        <td class="n">${r.invalide?"—":Math.round(r.global)}</td>
+        ${DIMKEY.map(d=>`<td class="n">${r.invalide||r.scores[d]==null?"—":Math.round(r.scores[d])}</td>`).join("")}
+        <td>${r.invalide?"<span class='muted'>non exploitable</span>":bande(r.global)}</td>
+        <td class="n">${r.ds}</td><td class="n">${r.inc}</td></tr>`).join("")}
+      </tbody></table></div></div>`}
+  </div>`;
+
+  const etat=$("#etat");
+  const maj=(ok,ko)=>{etat.innerHTML=`${ok?`<span style="color:var(--ok)">${ok} réponse${ok>1?"s":""} importée${ok>1?"s":""}.</span>`:""}${ko?` <span style="color:var(--bad)">${ko} entrée${ko>1?"s":""} illisible${ko>1?"s":""}.</span>`:""}`;
+    if(ok){sauver();setTimeout(render,700)}};
+
+  $("#impCodes").onclick=()=>{
+    const l=$("#codes").value.split("\n").map(s=>s.trim()).filter(Boolean);
+    let ok=0,ko=0; l.forEach(x=>importerCode(x)?ok++:ko++); maj(ok,ko);
+  };
+  const drop=$("#drop"), file=$("#file");
+  drop.onclick=()=>file.click();
+  drop.ondragover=e=>{e.preventDefault();drop.classList.add("over")};
+  drop.ondragleave=()=>drop.classList.remove("over");
+  drop.ondrop=e=>{e.preventDefault();drop.classList.remove("over");lire(e.dataTransfer.files)};
+  file.onchange=()=>lire(file.files);
+  function lire(fs){
+    let ok=0,ko=0,reste=fs.length;
+    if(!reste)return;
+    [...fs].forEach(f=>{
+      const rd=new FileReader();
+      rd.onload=()=>{try{importerFichier(JSON.parse(rd.result))?ok++:ko++}catch(e){ko++}finally{if(!--reste)maj(ok,ko)}};
+      rd.onerror=()=>{ko++;if(!--reste)maj(ok,ko)};
+      rd.readAsText(f);
+    });
+  }
+  const v=$("#vider");
+  if(v)v.onclick=()=>{if(confirm("Supprimer toutes les réponses importées dans ce navigateur ?")){ROWS=[];sauver();render();toast("Base vidée")}};
+  const c=$("#csv");
+  if(c)c.onclick=()=>{
+    const head=["matricule","entite","categorie","famille","campagne","date","global","profil",...DIMS.map(([,n])=>n),"dominance_haute","dominance_basse","DS","INC","exploitable"];
+    const body=ROWS.map(r=>[r.matricule,r.filiale,r.categorie,r.famille,r.campagne,r.date,
+      r.invalide?"":Math.round(r.global),r.invalide?"":bande(r.global),
+      ...DIMKEY.map(d=>r.invalide||r.scores[d]==null?"":Math.round(r.scores[d])),
+      r.invalide?"":DIMNAME[r.domHaut],r.invalide?"":DIMNAME[r.domBas],r.ds,r.inc,r.invalide?"non":"oui"]
+      .map(x=>`"${String(x==null?"":x).replace(/"/g,'""')}"`).join(";"));
+    const txt="﻿"+[head.join(";"),...body].join("\r\n");
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([txt],{type:"text/csv;charset=utf-8"}));
+    a.download="TAC-SUNU_resultats_"+new Date().toISOString().slice(0,10)+".csv";
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+    toast("CSV téléchargé");
+  };
+}
+charger();render();
+
+</script>
+</body>
+</html>

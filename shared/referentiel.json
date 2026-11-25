@@ -1,0 +1,798 @@
+{
+  "version": "TAC1",
+  "dims": [
+    {
+      "id": "H",
+      "label": "Héritage"
+    },
+    {
+      "id": "C",
+      "label": "Collaboration"
+    },
+    {
+      "id": "A",
+      "label": "Autonomie"
+    },
+    {
+      "id": "P",
+      "label": "Performance"
+    }
+  ],
+  "situations": [
+    {
+      "id": "A1",
+      "dim": "H",
+      "txt": "Une personne dont l'avis compte pour votre service vous demande de passer outre une étape de contrôle pour gagner trois jours. L'opération est courante, l'étape vous paraît formelle, et refuser créera une tension.",
+      "options": [
+        {
+          "txt": "Vous maintenez l'étape, expliquez à quoi elle sert et cherchez avec elle comment gagner du temps ailleurs.",
+          "points": 3
+        },
+        {
+          "txt": "Vous maintenez l'étape et signalez la demande à votre hiérarchie, sans en reparler à l'intéressé.",
+          "points": 2
+        },
+        {
+          "txt": "Vous demandez à votre manager de trancher, en précisant qui formule la demande.",
+          "points": 1
+        },
+        {
+          "txt": "Vous passez outre à titre exceptionnel, en gardant une trace écrite de la demande.",
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "dim": "H",
+      "txt": "Le Groupe demande de déployer dans votre entité une procédure qui fonctionne bien ailleurs. Chez vous, plusieurs conditions nécessaires ne sont pas réunies.",
+      "options": [
+        {
+          "txt": "Vous déployez tel quel : c'est un standard Groupe, l'adaptation viendra ensuite.",
+          "points": 1
+        },
+        {
+          "txt": "Vous remontez une analyse documentée des écarts et proposez une version adaptée, testée sur un périmètre réduit.",
+          "points": 3
+        },
+        {
+          "txt": "Vous déployez en apparence et laissez les équipes continuer comme avant.",
+          "points": 0
+        },
+        {
+          "txt": "Vous signalez l'écart en réunion et appliquez la consigne en attendant une décision du Groupe.",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "dim": "H",
+      "txt": "Un nouveau collaborateur, diplômé à l'étranger, vous confie qu'il voit SUNU comme une étape avant un vrai groupe international.",
+      "options": [
+        {
+          "txt": "Vous ne relevez pas : chacun ses ambitions.",
+          "points": 0
+        },
+        {
+          "txt": "Vous lui racontez l'histoire du Groupe et ce qu'elle change concrètement dans la façon de travailler, puis vous l'invitez à juger sur pièces.",
+          "points": 3
+        },
+        {
+          "txt": "Vous lui rappelez que SUNU est présent dans 17 pays et constitue bien un groupe international.",
+          "points": 2
+        },
+        {
+          "txt": "Vous en parlez à son manager pour qu'il le recadre.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": "A4",
+      "dim": "C",
+      "txt": "Vous tenez un sujet qui compte dans les résultats de votre service. Une autre équipe du Groupe le traiterait mieux et plus vite, mais le bénéfice lui serait attribué.",
+      "options": [
+        {
+          "txt": "Vous le gardez : vos objectifs sont vos objectifs.",
+          "points": 0
+        },
+        {
+          "txt": "Vous le transférez et informez votre manager de l'impact sur vos résultats.",
+          "points": 3
+        },
+        {
+          "txt": "Vous le gardez en sollicitant l'autre équipe en appui technique.",
+          "points": 2
+        },
+        {
+          "txt": "Vous laissez l'autre équipe le réclamer si elle y tient.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": "A5",
+      "dim": "C",
+      "txt": "Vous apprenez en réunion qu'une décision prise dans trois mois va modifier la façon de travailler de deux autres équipes, dont une dans un autre pays. Rien n'a été dit sur la diffusion de cette information.",
+      "options": [
+        {
+          "txt": "Vous attendez la communication officielle.",
+          "points": 2
+        },
+        {
+          "txt": "Vous vérifiez auprès du porteur ce qui est partageable, puis vous informez les deux équipes.",
+          "points": 3
+        },
+        {
+          "txt": "Vous en parlez à l'équipe de votre pays, que vous connaissez bien.",
+          "points": 1
+        },
+        {
+          "txt": "Vous ne dites rien : l'information ne vous a pas été confiée pour être relayée.",
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "A6",
+      "dim": "C",
+      "txt": "Une erreur commise dans votre équipe a produit des conséquences visibles à l'extérieur du service. Vous l'avez corrigée. La même erreur est possible dans d'autres entités qui travaillent de la même façon.",
+      "options": [
+        {
+          "txt": "Vous corrigez et passez à la suite : le problème est réglé chez vous.",
+          "points": 0
+        },
+        {
+          "txt": "Vous documentez la cause et la correction, et les partagez avec les autres entités concernées.",
+          "points": 3
+        },
+        {
+          "txt": "Vous prévenez oralement un collègue d'une autre entité que vous connaissez bien.",
+          "points": 1
+        },
+        {
+          "txt": "Vous signalez l'incident à votre manager en lui laissant le soin d'alerter.",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "A7",
+      "dim": "A",
+      "txt": "Un interlocuteur important demande une solution inhabituelle mais parfaitement régulière. Votre délégation vous permet de décider. Vous n'avez jamais traité ce cas, et une validation Groupe prendrait trois semaines.",
+      "options": [
+        {
+          "txt": "Vous remontez au Groupe par prudence.",
+          "points": 2
+        },
+        {
+          "txt": "Vous décidez dans votre délégation, documentez votre raisonnement et informez votre manager.",
+          "points": 3
+        },
+        {
+          "txt": "Vous refusez : ce n'est pas la pratique habituelle.",
+          "points": 0
+        },
+        {
+          "txt": "Vous décidez dans votre délégation sans en informer personne.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": "A8",
+      "dim": "A",
+      "txt": "Un dossier que vous pilotez accuse deux mois de retard. Les causes sont mixtes : un intervenant extérieur défaillant, et une décision que vous aviez validée trop vite.",
+      "options": [
+        {
+          "txt": "En comité, vous présentez le retard en expliquant la défaillance de l'intervenant extérieur.",
+          "points": 1
+        },
+        {
+          "txt": "Vous présentez le retard, ses deux causes dont la vôtre, et le plan de rattrapage.",
+          "points": 3
+        },
+        {
+          "txt": "Vous attendez d'avoir rattrapé une partie du retard avant d'en parler.",
+          "points": 0
+        },
+        {
+          "txt": "Vous présentez le retard et demandez un arbitrage sur les moyens, sans détailler les causes.",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "A9",
+      "dim": "A",
+      "txt": "On vous demande d'expliquer pourquoi deux équipes comparables obtiennent des résultats très différents sur la même activité. Le responsable de celle qui est en retard explique que son contexte est plus difficile.",
+      "options": [
+        {
+          "txt": "Vous reprenez son explication dans votre analyse : il connaît son contexte mieux que vous.",
+          "points": 0
+        },
+        {
+          "txt": "Vous comparez les données disponibles — charge, moyens, nature des dossiers, organisation — avant de conclure.",
+          "points": 3
+        },
+        {
+          "txt": "Vous concluez que le contexte n'y est pour rien : les deux équipes ont les mêmes moyens.",
+          "points": 1
+        },
+        {
+          "txt": "Vous demandez à l'équipe performante de décrire sa méthode, et vous la comparez à l'autre.",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "A10",
+      "dim": "P",
+      "txt": "Les délais de traitement de votre service se dégradent. Les équipes évoquent la charge, les destinataires de votre travail se plaignent, et vous n'avez pas de données fiables sur les causes.",
+      "options": [
+        {
+          "txt": "Vous demandez de traiter en priorité les demandes les plus anciennes.",
+          "points": 1
+        },
+        {
+          "txt": "Vous analysez un échantillon de dossiers et interrogez ceux qui se plaignent avant d'agir.",
+          "points": 3
+        },
+        {
+          "txt": "Vous demandez un renfort temporaire.",
+          "points": 2
+        },
+        {
+          "txt": "Vous attendez le prochain reporting pour y voir clair.",
+          "points": 0
+        }
+      ]
+    },
+    {
+      "id": "A11",
+      "dim": "P",
+      "txt": "Votre semaine est saturée. Votre manager demande une analyse pour un comité, un interlocuteur réclame une réponse en attente depuis plusieurs jours, et un chantier Groupe attend votre contribution depuis deux semaines.",
+      "options": [
+        {
+          "txt": "Vous traitez d'abord ce qui est le plus urgent pour votre manager.",
+          "points": 1
+        },
+        {
+          "txt": "Vous arbitrez selon la contribution aux priorités stratégiques et annoncez ce que vous ne ferez pas.",
+          "points": 3
+        },
+        {
+          "txt": "Vous essayez de tout faire, quitte à rendre des livrables moyens.",
+          "points": 0
+        },
+        {
+          "txt": "Vous demandez à votre manager d'arbitrer entre les trois.",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "A12",
+      "dim": "P",
+      "txt": "Vous avez mis en place il y a six mois une amélioration dans votre service. L'équipe la trouve positive. On vous demande s'il faut l'étendre aux autres entités.",
+      "options": [
+        {
+          "txt": "Vous recommandez de l'étendre : le ressenti des équipes est bon.",
+          "points": 1
+        },
+        {
+          "txt": "Vous comparez les indicateurs avant et après, et recueillez l'avis des destinataires, avant de vous prononcer.",
+          "points": 3
+        },
+        {
+          "txt": "Vous recommandez de la poursuivre chez vous sans l'étendre, le temps d'y voir plus clair.",
+          "points": 2
+        },
+        {
+          "txt": "Vous recommandez de l'étendre et passez au chantier suivant : l'essentiel est qu'elle soit en place.",
+          "points": 0
+        }
+      ]
+    }
+  ],
+  "blocs": [
+    {
+      "id": "B1",
+      "items": [
+        {
+          "txt": "Je prends le temps de tenir mes collègues informés de ce qui les concerne.",
+          "dim": "C"
+        },
+        {
+          "txt": "Je tranche sans attendre quand la décision m'appartient.",
+          "dim": "A"
+        },
+        {
+          "txt": "Je vérifie l'effet réel de ce que je mets en place.",
+          "dim": "P"
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "items": [
+        {
+          "txt": "Je tiens mes engagements, même quand cela me coûte.",
+          "dim": "H"
+        },
+        {
+          "txt": "Je réponds présent quand une autre équipe est en difficulté.",
+          "dim": "C"
+        },
+        {
+          "txt": "Je teste une solution plutôt que d'attendre une certitude.",
+          "dim": "A"
+        }
+      ]
+    },
+    {
+      "id": "B3",
+      "items": [
+        {
+          "txt": "Je demande leur avis à ceux qui utilisent mon travail avant de changer une pratique.",
+          "dim": "P"
+        },
+        {
+          "txt": "J'adapte les solutions aux réalités de mon marché.",
+          "dim": "H"
+        },
+        {
+          "txt": "J'assume publiquement mes erreurs.",
+          "dim": "A"
+        }
+      ]
+    },
+    {
+      "id": "B4",
+      "items": [
+        {
+          "txt": "Je partage mes bonnes pratiques avec d'autres entités.",
+          "dim": "C"
+        },
+        {
+          "txt": "Je concentre mon énergie sur ce qui compte le plus pour la stratégie.",
+          "dim": "P"
+        },
+        {
+          "txt": "Je parle avec fierté de l'histoire de notre Groupe.",
+          "dim": "H"
+        }
+      ]
+    },
+    {
+      "id": "B5",
+      "items": [
+        {
+          "txt": "Je prends des initiatives sans attendre qu'on me les demande.",
+          "dim": "A"
+        },
+        {
+          "txt": "Je refuse les arrangements contraires à nos règles, même sous pression.",
+          "dim": "H"
+        },
+        {
+          "txt": "Je sais dire non à ce qui ne sert pas nos priorités.",
+          "dim": "P"
+        }
+      ]
+    },
+    {
+      "id": "B6",
+      "items": [
+        {
+          "txt": "J'apprends des réussites et des erreurs des autres équipes.",
+          "dim": "C"
+        },
+        {
+          "txt": "Je rends compte de ce que je décide.",
+          "dim": "A"
+        },
+        {
+          "txt": "Je privilégie les solutions qui tiendront dans la durée.",
+          "dim": "H"
+        }
+      ]
+    },
+    {
+      "id": "B7",
+      "items": [
+        {
+          "txt": "Je suis attentif à l'effet de mes décisions sur ceux qui reçoivent mon travail.",
+          "dim": "P"
+        },
+        {
+          "txt": "Je facilite le travail entre métiers qui ne se parlent pas.",
+          "dim": "C"
+        },
+        {
+          "txt": "Je m'appuie sur les faits pour ajuster mes actions.",
+          "dim": "A"
+        }
+      ]
+    },
+    {
+      "id": "B8",
+      "items": [
+        {
+          "txt": "Je tiens parole même quand les circonstances changent.",
+          "dim": "H"
+        },
+        {
+          "txt": "Je vérifie que mon travail contribue aux objectifs du Groupe.",
+          "dim": "P"
+        },
+        {
+          "txt": "Je donne aux autres l'information utile avant qu'ils la demandent.",
+          "dim": "C"
+        }
+      ]
+    },
+    {
+      "id": "B9",
+      "items": [
+        {
+          "txt": "J'ose proposer des choses qui n'ont jamais été faites ici.",
+          "dim": "A"
+        },
+        {
+          "txt": "Je m'appuie sur les retours de mes interlocuteurs pour progresser.",
+          "dim": "P"
+        },
+        {
+          "txt": "Je défends l'ancrage africain de nos solutions.",
+          "dim": "H"
+        }
+      ]
+    },
+    {
+      "id": "B10",
+      "items": [
+        {
+          "txt": "Je soutiens mes collègues dans les moments de forte exigence.",
+          "dim": "C"
+        },
+        {
+          "txt": "J'agis avec la même rigueur quand personne ne contrôle.",
+          "dim": "H"
+        },
+        {
+          "txt": "Je prends la responsabilité des résultats de mon périmètre.",
+          "dim": "A"
+        }
+      ]
+    },
+    {
+      "id": "B11",
+      "items": [
+        {
+          "txt": "Je suis les indicateurs de mon activité.",
+          "dim": "P"
+        },
+        {
+          "txt": "Je décide dans ma délégation sans faire remonter systématiquement.",
+          "dim": "A"
+        },
+        {
+          "txt": "Je fais circuler l'information entre pays.",
+          "dim": "C"
+        }
+      ]
+    },
+    {
+      "id": "B12",
+      "items": [
+        {
+          "txt": "Je fais le lien entre ce que nous sommes aujourd'hui et notre histoire.",
+          "dim": "H"
+        },
+        {
+          "txt": "Je cherche la solution commune plutôt que celle de mon équipe.",
+          "dim": "C"
+        },
+        {
+          "txt": "Je concentre mes efforts là où l'impact est le plus fort.",
+          "dim": "P"
+        }
+      ]
+    }
+  ],
+  "likert": [
+    {
+      "id": "C1",
+      "dim": "H",
+      "comp": "H1",
+      "rev": false,
+      "txt": "Je parle de l'appartenance au Groupe SUNU comme d'un atout auprès de personnes extérieures au Groupe."
+    },
+    {
+      "id": "C2",
+      "dim": "H",
+      "comp": "H1",
+      "rev": false,
+      "txt": "Je relie ce que fait mon équipe aujourd'hui à l'histoire et aux choix fondateurs du Groupe."
+    },
+    {
+      "id": "C3",
+      "dim": "H",
+      "comp": "H2",
+      "rev": false,
+      "txt": "Avant d'adopter une solution venue d'ailleurs, je vérifie qu'elle tient compte de nos réalités locales."
+    },
+    {
+      "id": "C4",
+      "dim": "H",
+      "comp": "H2",
+      "rev": true,
+      "txt": "Je privilégie la solution qui règle le problème immédiat, même si elle ne tiendra pas dans la durée."
+    },
+    {
+      "id": "C5",
+      "dim": "H",
+      "comp": "H3",
+      "rev": false,
+      "txt": "Je tiens les délais et les engagements que j'annonce."
+    },
+    {
+      "id": "C6",
+      "dim": "H",
+      "comp": "H3",
+      "rev": true,
+      "txt": "Il m'arrive de contourner une règle interne quand elle me paraît ralentir inutilement le travail."
+    },
+    {
+      "id": "C7",
+      "dim": "C",
+      "comp": "C1",
+      "rev": false,
+      "txt": "J'accepte des arbitrages défavorables à mon périmètre quand l'intérêt du Groupe le justifie."
+    },
+    {
+      "id": "C8",
+      "dim": "C",
+      "comp": "C1",
+      "rev": true,
+      "txt": "Je défends d'abord les résultats de mon équipe, avant ceux de l'ensemble."
+    },
+    {
+      "id": "C9",
+      "dim": "C",
+      "comp": "C2",
+      "rev": false,
+      "txt": "Je transmets spontanément aux équipes concernées les informations qui les touchent."
+    },
+    {
+      "id": "C10",
+      "dim": "C",
+      "comp": "C2",
+      "rev": true,
+      "txt": "J'attends qu'on me demande une information avant de la transmettre."
+    },
+    {
+      "id": "C11",
+      "dim": "C",
+      "comp": "C3",
+      "rev": false,
+      "txt": "Je me rends disponible pour aider une autre équipe quand la charge monte."
+    },
+    {
+      "id": "C12",
+      "dim": "C",
+      "comp": "C3",
+      "rev": false,
+      "txt": "Je réponds aux sollicitations de collègues d'autres entités dans des délais courts."
+    },
+    {
+      "id": "C13",
+      "dim": "C",
+      "comp": "C4",
+      "rev": false,
+      "txt": "Je partage mes réussites et mes erreurs pour que d'autres en tirent parti."
+    },
+    {
+      "id": "C14",
+      "dim": "C",
+      "comp": "C4",
+      "rev": false,
+      "txt": "Je m'inspire de ce qui a été fait ailleurs dans le Groupe avant de construire ma solution."
+    },
+    {
+      "id": "C15",
+      "dim": "A",
+      "comp": "A1",
+      "rev": false,
+      "txt": "J'annonce moi-même les mauvaises nouvelles sur mes dossiers, sans attendre qu'on les découvre."
+    },
+    {
+      "id": "C16",
+      "dim": "A",
+      "comp": "A1",
+      "rev": true,
+      "txt": "Quand un résultat n'est pas atteint, j'explique d'abord ce qui ne dépendait pas de moi."
+    },
+    {
+      "id": "C17",
+      "dim": "A",
+      "comp": "A2",
+      "rev": false,
+      "txt": "Je teste une solution nouvelle même sans garantie de résultat."
+    },
+    {
+      "id": "C18",
+      "dim": "A",
+      "comp": "A2",
+      "rev": true,
+      "txt": "J'évite de prendre des initiatives qui pourraient m'être reprochées."
+    },
+    {
+      "id": "C19",
+      "dim": "A",
+      "comp": "A3",
+      "rev": false,
+      "txt": "Je m'appuie sur des données chiffrées pour trancher."
+    },
+    {
+      "id": "C20",
+      "dim": "A",
+      "comp": "A3",
+      "rev": false,
+      "txt": "J'ajuste mes actions quand les résultats montrent que ma première approche ne marche pas."
+    },
+    {
+      "id": "C21",
+      "dim": "P",
+      "comp": "P1",
+      "rev": false,
+      "txt": "Je recueille l'avis de ceux qui utilisent mon travail avant de modifier une pratique."
+    },
+    {
+      "id": "C22",
+      "dim": "P",
+      "comp": "P1",
+      "rev": true,
+      "txt": "Je connais assez bien les attentes de mes interlocuteurs pour ne pas avoir besoin de les interroger."
+    },
+    {
+      "id": "C23",
+      "dim": "P",
+      "comp": "P2",
+      "rev": false,
+      "txt": "Je vérifie qu'une tâche contribue aux priorités stratégiques avant de m'y engager."
+    },
+    {
+      "id": "C24",
+      "dim": "P",
+      "comp": "P2",
+      "rev": false,
+      "txt": "Je dis explicitement ce que je ne ferai pas quand ma charge est saturée."
+    },
+    {
+      "id": "C25",
+      "dim": "P",
+      "comp": "P3",
+      "rev": false,
+      "txt": "Je définis à l'avance comment je saurai qu'une action a réussi."
+    },
+    {
+      "id": "C26",
+      "dim": "P",
+      "comp": "P3",
+      "rev": true,
+      "txt": "Je passe à l'action suivante sans avoir mesuré l'effet de la précédente."
+    }
+  ],
+  "validite": [
+    {
+      "id": "D1",
+      "kind": "ds",
+      "txt": "Il ne m'est jamais arrivé d'être agacé par un collègue."
+    },
+    {
+      "id": "D2",
+      "kind": "ds",
+      "txt": "Je n'ai jamais laissé passer une échéance."
+    },
+    {
+      "id": "D3",
+      "kind": "ds",
+      "txt": "Je dis toujours exactement ce que je pense, en toute circonstance."
+    },
+    {
+      "id": "D4",
+      "kind": "ds",
+      "txt": "Il ne m'est jamais arrivé de reporter une tâche désagréable."
+    },
+    {
+      "id": "D5",
+      "kind": "ds",
+      "txt": "Je n'ai jamais rien dit dont j'aurais pu regretter les conséquences."
+    },
+    {
+      "id": "I1",
+      "kind": "inc",
+      "txt": "Les équipes concernées apprennent par moi ce qui les concerne.",
+      "pair": "C9",
+      "opp": false
+    },
+    {
+      "id": "I2",
+      "kind": "inc",
+      "txt": "Je commence par ce qui relève de moi quand j'analyse un échec.",
+      "pair": "C16",
+      "opp": true
+    },
+    {
+      "id": "I3",
+      "kind": "inc",
+      "txt": "Je demande des chiffres avant de décider.",
+      "pair": "C19",
+      "opp": false
+    },
+    {
+      "id": "I4",
+      "kind": "inc",
+      "txt": "Je m'engage sur des tâches sans vérifier leur lien avec nos priorités.",
+      "pair": "C23",
+      "opp": true
+    }
+  ],
+  "categories": [
+    "Dirigeant (DG, CODIR)",
+    "Manager",
+    "Collaborateur sans encadrement"
+  ],
+  "familles": [
+    "Métier (technique, commercial, exploitation)",
+    "Support (RH, finance, IT, communication, juridique)",
+    "Contrôle (audit, conformité, risques, qualité)"
+  ],
+  "echelle": [
+    {
+      "value": 1,
+      "label": "Jamais"
+    },
+    {
+      "value": 2,
+      "label": "Rarement"
+    },
+    {
+      "value": 3,
+      "label": "Parfois"
+    },
+    {
+      "value": 4,
+      "label": "Souvent"
+    },
+    {
+      "value": 5,
+      "label": "Presque toujours"
+    }
+  ],
+  "bandes": [
+    {
+      "min": 85,
+      "label": "Ambassadeur",
+      "description": "La personne incarne et entraîne : elle peut relayer la culture auprès des autres."
+    },
+    {
+      "min": 65,
+      "label": "Aligné",
+      "description": "Les comportements attendus sont maîtrisés et mobilisés, y compris quand ils coûtent."
+    },
+    {
+      "min": 45,
+      "label": "En développement",
+      "description": "Les comportements sont compris mais appliqués de façon irrégulière."
+    },
+    {
+      "min": 0,
+      "label": "Éloigné",
+      "description": "Les comportements attendus ne sont ni reconnus ni pratiqués de façon stable."
+    }
+  ]
+}

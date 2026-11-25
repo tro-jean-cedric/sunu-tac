@@ -1,0 +1,16 @@
+/* read-aloud highlighting */
+.tac-spoken-seg {
+  background: linear-gradient(transparent 62%, rgba(181, 134, 47, 0.22) 62%);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+.tac-spoken-word {
+  color: inherit;
+  background: rgba(181, 134, 47, 0.45);
+  border-radius: 3px;
+  padding: 0 1px;
+  box-shadow: 0 0 0 1px rgba(181, 134, 47, 0.35);
+}
+@media print {
+  .tac-spoken-seg, .tac-spoken-word { background: none; box-shadow: none; }
+}
